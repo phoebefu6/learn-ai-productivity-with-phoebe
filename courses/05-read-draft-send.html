@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 5 of 6. The permission an assistant really holds is the scope string on the consent screen. On Gmail the scope that writes a draft also sends; Microsoft Graph splits draft from send, and its read-write scope includes delete. Where a confirmation belongs, the delegation ladder, and an audit of every app that can touch your mailbox.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Read, draft, send - learn ai productivity with phoebe">
+<meta property="og:description" content="Session 5 of 6. gmail.compose reads 'Manage drafts and send emails.' There is no draft-only Gmail scope. Read the slip before you sign it.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/courses/05-read-draft-send.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Read, draft, send - learn ai productivity with phoebe">
+<meta name="twitter:description" content="Session 5 of 6. Scopes, confirmation gates and the delegation ladder, plus a mailbox access audit.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 5 · Read, draft, send - learn ai productivity with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=2">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-productivity-with-phoebe</a> / Session 5 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI Productivity with Phoebe · Session 5 of 6</div>
+    <h1>Read, draft, <span class="accent">send</span></h1>
+    <p class="sub">Until tonight every tool in the system only changed what you looked at first. The moment an assistant can write in your mailbox, the question stops being "is it accurate" and becomes "what is it allowed to do when it is wrong". That answer is not in the product page or the demo. It is in a short string on the consent screen you clicked through, and on one of the two big mail platforms, the string that lets an assistant write a draft also lets it send. Tonight we read those strings, put a confirmation where it actually stops damage, and audit every app that can already touch your mail.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Hands-on</span>
+      <span class="chip audience">Anyone who has clicked "Allow" on a mail app</span>
+      <span class="chip audience">Bring the laptop you read mail on</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · Scopes, confirmation, the ladder</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: audit your mailbox access</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we left off</h2>
+    </div>
+    <p class="lede">Session 4 scored triage rules on 390 real messages, and the worst outcome of a bad rule was a message read late. Flags are cheap to get wrong because you see every mistake first. Drafts, sends and deletes are different animals: some mistakes are read by someone else before you notice, and some are never noticed at all. So before any assistant gets one of those powers, you decide which ones, in writing, and check that the permission it actually holds matches what you decided.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = do it on your own week</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A list of every app that can touch your mail, each scope written in plain words, anything over-granted revoked, and a one-line permission slip for each assistant you keep: what it may read, whether it may draft, whether it may send, and when you will look again.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers OAuth scopes as the real permission</span>
+      <h2>The scope string is the permission slip</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">When an app asks to connect to your mail, the consent screen lists scopes: short strings that the platform turns into a sentence. That sentence is the whole of what the app can do, whatever its marketing says it will do. An assistant that "only ever drafts" is describing its behaviour. The scope describes its permission, and the two are not the same promise.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 684" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gmail API scopes listed from narrowest to widest with Google's own wording: gmail.labels, see and edit your email labels, non-sensitive; gmail.metadata, labels and headers but not the body, restricted; gmail.readonly, view your email messages and settings, restricted; gmail.send, send email on your behalf, sensitive; gmail.compose, manage drafts and send emails, restricted, highlighted because there is no draft-only Gmail scope; gmail.modify, read, compose and send, restricted; mail.google.com, read, compose, send and permanently delete all your email, restricted. Below, Microsoft Graph delegated permissions: Mail.ReadBasic, Mail.Read, Mail.ReadWrite which creates, reads, updates and deletes but does not include send, then a dashed wall, then Mail.Send.">
+        <defs>
+          <filter id="p5aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="51" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p5aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p5aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p5aH { font: 800 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5aL { font: 600 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5aS { font: 400 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+          .p5aB { font: 800 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #6B3A00; }
+          .p5aA { font: 700 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #8957A2; }
+          .p5aN { font: 400 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p5aH" x="30" y="26">WHAT EACH SCOPE STRING UNLOCKS, IN THE PLATFORM'S OWN WORDS</text>
+
+        <g filter="url(#p5aSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- doodle anchor: a key -->
+          <circle cx="812" cy="22" r="8"/>
+          <path d="M820 22 L846 22 M838 22 L838 30 M844 22 L844 28"/>
+          <!-- Gmail rows -->
+          <rect x="30" y="60" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(-0.3 440 80)"/>
+          <rect x="30" y="106" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(0.2 440 126)"/>
+          <rect x="30" y="152" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(-0.2 440 172)"/>
+          <rect x="30" y="198" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(0.3 440 218)"/>
+          <rect x="30" y="244" width="820" height="40" rx="6" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-0.3 440 264)"/>
+          <rect x="30" y="290" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(0.2 440 310)"/>
+          <rect x="30" y="336" width="820" height="40" rx="6" fill="url(#p5aHc)" transform="rotate(-0.2 440 356)"/>
+          <path d="M238 66 L238 94 M238 112 L238 140 M238 158 L238 186 M238 204 L238 232 M238 250 L238 278 M238 296 L238 324 M238 342 L238 370"/>
+          <!-- Graph rows -->
+          <rect x="30" y="418" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(0.2 440 438)"/>
+          <rect x="30" y="464" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(-0.2 440 484)"/>
+          <rect x="30" y="510" width="820" height="40" rx="6" fill="#F6F0FA" transform="rotate(0.3 440 530)"/>
+          <rect x="30" y="580" width="820" height="40" rx="6" fill="#FFFFFF" transform="rotate(-0.3 440 600)"/>
+          <path d="M238 424 L238 452 M238 470 L238 498 M238 516 L238 544 M238 586 L238 614"/>
+          <!-- the wall Graph has and Gmail does not -->
+          <path d="M40 565 L292 565 M588 565 L840 565" stroke="#9C5600" stroke-dasharray="7 6"/>
+        </g>
+
+        <text class="p5aA" x="30" y="50">GMAIL API, NARROWEST TO WIDEST</text>
+
+        <text class="p5aL" x="44" y="77">gmail.labels</text>
+        <text class="p5aS" x="44" y="92">non-sensitive</text>
+        <text class="p5aS" x="252" y="84">"See and edit your email labels."</text>
+
+        <text class="p5aL" x="44" y="123">gmail.metadata</text>
+        <text class="p5aS" x="44" y="138">restricted</text>
+        <text class="p5aS" x="252" y="130">"View your email message metadata such as labels and headers, but not the email body."</text>
+
+        <text class="p5aL" x="44" y="169">gmail.readonly</text>
+        <text class="p5aS" x="44" y="184">restricted</text>
+        <text class="p5aS" x="252" y="176">"View your email messages and settings."</text>
+
+        <text class="p5aL" x="44" y="215">gmail.send</text>
+        <text class="p5aS" x="44" y="230">sensitive</text>
+        <text class="p5aS" x="252" y="222">"Send email on your behalf."</text>
+
+        <text class="p5aL" x="44" y="261">gmail.compose</text>
+        <text class="p5aS" x="44" y="276">restricted</text>
+        <text class="p5aL" x="252" y="261">"Manage drafts and send emails."</text>
+        <text class="p5aB" x="252" y="276">No draft-only Gmail scope exists. The scope that writes a draft can also send.</text>
+
+        <text class="p5aL" x="44" y="307">gmail.modify</text>
+        <text class="p5aS" x="44" y="322">restricted</text>
+        <text class="p5aS" x="252" y="307">"Read, compose, and send emails from your Gmail account."</text>
+        <text class="p5aS" x="252" y="322">Per the same table: no immediate, permanent deletion that bypasses the trash.</text>
+
+        <text class="p5aL" x="44" y="353">mail.google.com/</text>
+        <text class="p5aS" x="44" y="368">restricted</text>
+        <text class="p5aL" x="252" y="360">"Read, compose, send, and permanently delete all your email from Gmail."</text>
+
+        <text class="p5aA" x="30" y="408">MICROSOFT GRAPH, DELEGATED, NARROWEST TO WIDEST</text>
+
+        <text class="p5aL" x="44" y="435">Mail.ReadBasic</text>
+        <text class="p5aS" x="44" y="450">delegated</text>
+        <text class="p5aS" x="252" y="442">Reads mail "except body, previewBody, attachments and any extended properties".</text>
+
+        <text class="p5aL" x="44" y="481">Mail.Read</text>
+        <text class="p5aS" x="44" y="496">delegated</text>
+        <text class="p5aS" x="252" y="488">"Allows the app to read the signed-in user's mailbox."</text>
+
+        <text class="p5aL" x="44" y="527">Mail.ReadWrite</text>
+        <text class="p5aS" x="44" y="542">delegated</text>
+        <text class="p5aS" x="252" y="527">"Allows the app to create, read, update, and delete email in user mailboxes.</text>
+        <text class="p5aB" x="252" y="542">Does not include permission to send mail." Drafts live here, and so does delete.</text>
+
+        <text class="p5aB" x="440" y="569" text-anchor="middle">the draft and send wall Gmail does not have</text>
+
+        <text class="p5aL" x="44" y="597">Mail.Send</text>
+        <text class="p5aS" x="44" y="612">delegated</text>
+        <text class="p5aS" x="252" y="604">"Allows the app to send mail as users in the organization."</text>
+
+        <text class="p5aN" x="30" y="650">Scope strings and quoted wording read in October 2026 from Google for Developers and Microsoft Learn.</text>
+        <text class="p5aN" x="30" y="668">Vendors rename and reword scopes: re-check both pages before you rely on any line here.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - on Gmail, drafting and sending sit in one scope; on Graph a wall separates them, and the read-write side of the wall includes delete</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Reading a consent screen<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The consent screen is where the permission is granted, so it is the only place worth reading slowly. Three habits make it quick. <strong>Read the sentence, not the logo.</strong> Each line on the screen is the platform's own description of a scope, the same wording as the figure above. "Manage drafts and send emails" means send, whatever the app's homepage says about drafts. <strong>Count the verbs.</strong> View, edit labels, compose, send, permanently delete: each verb is a separate power, and an app that asks for more verbs than its job needs is over-asking. <strong>Ask what the narrowest honest scope would be.</strong> A tool that only sorts mail needs labels and maybe metadata. A tool that only drafts needs, on Graph, Mail.ReadWrite; on Gmail it needs gmail.compose, and gmail.compose also sends.</p>
+        <p>That last point is the one that surprises people. On Gmail there is no scope that allows drafts without also allowing sends, so "drafts only" on Gmail is a promise the app makes about its own behaviour, not a limit the platform enforces. On Microsoft Graph the split exists: Mail.ReadWrite creates and edits drafts and "Does not include permission to send mail", and sending needs Mail.Send. The price of that split is that Mail.ReadWrite also deletes. Neither platform gives you a clean "draft but never delete, never send" grant.</p>
+        <p>How one specific add-in was designed around these permissions is covered in <a href="https://phoebefu6.github.io/learn-ai-office-with-phoebe/courses/04-inbox-and-meetings.html">AI Office, session 4 ↗</a>; here the job is reading whatever slip any app hands you.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Sensitive, restricted, and "the most narrowly focused scope"<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Google's scope table tags every Gmail scope non-sensitive, sensitive or restricted. Read the tag as one signal, not a risk ranking for your purposes. gmail.labels is non-sensitive. gmail.metadata, which cannot see a single message body, is restricted. gmail.send, which can put words in your name in front of anyone, is tagged sensitive, one step below metadata. The tags track what an app can see far more than what it can do on your behalf, and for a personal ops assistant the doing is the part that bites.</p>
+        <p>Google's own guidance to developers is to "choose the most narrowly focused scope possible", and its note on the widest scope says to request https://mail.google.com/ "only if your application needs to immediately and permanently delete threads and messages, bypassing the trash." Hold apps to the developer guidance. A tool that sorts your mail and asks for full mail access is not following it.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>"It only writes drafts."</strong> An assistant connected to a Gmail account says, truthfully, that it never sends: it leaves drafts for you to review. The consent screen it showed read "Manage drafts and send emails." Both statements are accurate, and they are about different things. The first is what the software does today. The second is what any version of it, a buggy release, or anyone who gets hold of its token, is permitted to do. When the two differ, the permission is the one to plan around.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers confirmation where it bites</span>
+      <h2>Confirm before it acts, not after</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">If the scope cannot be narrowed, the next line of defence is a person saying yes. Where that yes sits decides whether it does anything. A confirmation after the action is a notification. A confirmation at the start of a session is a permission slip with no limits. The one that works sits between the agent's decision and the irreversible step, every time.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 474" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Top lane, before defences: an email claims emails needed to be deleted for mailbox hygiene with no additional confirmation required; the agent reads the inbox while doing the user's task; the instruction inside the content becomes its plan; the user's emails are deleted with no confirmation. Bottom lane: the same email, the same reading and the same plan, then a confirmation gate that asks the user before the deletion runs; on no nothing is deleted, on yes it runs. Below: 123 test cases, 29 attack scenarios, 23.6 percent attack success without mitigations, 11.2 percent with mitigations in autonomous mode.">
+        <defs>
+          <filter id="p5bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p5bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p5bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p5bH { font: 800 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5bL { font: 600 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5bS { font: 400 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+          .p5bB { font: 800 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #6B3A00; }
+          .p5bV { font: 800 18px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #4A2A5E; }
+          .p5bA { font: 700 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #8957A2; }
+          .p5bN { font: 400 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p5bH" x="30" y="26">ONE INJECTED EMAIL, TWO PATHS</text>
+
+        <g filter="url(#p5bSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- doodle anchor: an envelope -->
+          <rect x="806" y="10" width="40" height="26" rx="2" fill="#FFFFFF"/>
+          <path d="M806 12 L826 26 L846 12"/>
+          <!-- lane 1 -->
+          <rect x="40" y="66" width="170" height="96" rx="8" fill="url(#p5bHc)" transform="rotate(-1 125 114)"/>
+          <rect x="250" y="66" width="170" height="96" rx="8" fill="#FFFFFF" transform="rotate(0.8 335 114)"/>
+          <rect x="460" y="66" width="170" height="96" rx="8" fill="#F6F0FA" transform="rotate(-0.6 545 114)"/>
+          <rect x="670" y="66" width="170" height="96" rx="8" fill="#FEF2F2" stroke="#991B1B" transform="rotate(1 755 114)"/>
+          <path d="M214 114 L244 114" marker-end="url(#p5bAr)"/>
+          <path d="M424 114 L454 114" marker-end="url(#p5bAr)"/>
+          <path d="M634 114 L664 114" marker-end="url(#p5bAr)"/>
+          <!-- lane 2 -->
+          <rect x="40" y="208" width="140" height="84" rx="8" fill="url(#p5bHc)" transform="rotate(0.8 110 250)"/>
+          <rect x="200" y="208" width="140" height="84" rx="8" fill="#FFFFFF" transform="rotate(-0.8 270 250)"/>
+          <rect x="360" y="208" width="140" height="84" rx="8" fill="#F6F0FA" transform="rotate(0.6 430 250)"/>
+          <rect x="520" y="208" width="140" height="84" rx="8" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-1 590 250)"/>
+          <rect x="680" y="208" width="160" height="84" rx="8" fill="#FFFFFF" transform="rotate(0.8 760 250)"/>
+          <path d="M183 250 L196 250" marker-end="url(#p5bAr)"/>
+          <path d="M343 250 L356 250" marker-end="url(#p5bAr)"/>
+          <path d="M503 250 L516 250" marker-end="url(#p5bAr)"/>
+          <path d="M663 250 L676 250" marker-end="url(#p5bAr)"/>
+          <!-- numbers -->
+          <rect x="40" y="342" width="170" height="70" rx="6" fill="#FFFFFF" transform="rotate(-0.5 125 377)"/>
+          <rect x="250" y="342" width="170" height="70" rx="6" fill="#FFFFFF" transform="rotate(0.5 335 377)"/>
+          <rect x="460" y="342" width="170" height="70" rx="6" fill="#FFFFFF" transform="rotate(-0.5 545 377)"/>
+          <rect x="670" y="342" width="170" height="70" rx="6" fill="#F6F0FA" transform="rotate(0.5 755 377)"/>
+        </g>
+
+        <text class="p5bA" x="40" y="54">BEFORE DEFENCES: THE CASE ANTHROPIC PUBLISHED</text>
+
+        <text class="p5bL" x="52" y="88">1 · an email arrives</text>
+        <text class="p5bS" x="52" y="106">"needed to be deleted"</text>
+        <text class="p5bS" x="52" y="121">for "mailbox hygiene",</text>
+        <text class="p5bS" x="52" y="136">"no additional</text>
+        <text class="p5bS" x="52" y="151">confirmation required"</text>
+
+        <text class="p5bL" x="262" y="88">2 · the agent reads</text>
+        <text class="p5bS" x="262" y="106">the inbox, doing the</text>
+        <text class="p5bS" x="262" y="121">user's own task</text>
+        <text class="p5bS" x="262" y="136">the email is content</text>
+
+        <text class="p5bL" x="472" y="88">3 · it obeys the text</text>
+        <text class="p5bS" x="472" y="106">an instruction inside</text>
+        <text class="p5bS" x="472" y="121">content becomes the</text>
+        <text class="p5bS" x="472" y="136">plan: delete emails</text>
+
+        <text class="p5bL" x="682" y="88">4 · mail deleted</text>
+        <text class="p5bS" x="682" y="106">no confirmation asked</text>
+        <text class="p5bS" x="682" y="121">the user found out</text>
+        <text class="p5bS" x="682" y="136">afterwards</text>
+
+        <text class="p5bA" x="40" y="196">THE SAME PATH, WITH A CONFIRMATION GATE BEFORE THE IRREVERSIBLE STEP</text>
+
+        <text class="p5bL" x="52" y="230">1 · same email</text>
+        <text class="p5bS" x="52" y="248">same instruction</text>
+        <text class="p5bS" x="52" y="263">inside content</text>
+
+        <text class="p5bL" x="212" y="230">2 · reads inbox</text>
+        <text class="p5bS" x="212" y="248">the user's task</text>
+
+        <text class="p5bL" x="372" y="230">3 · plans delete</text>
+        <text class="p5bS" x="372" y="248">decided, not done</text>
+
+        <text class="p5bL" x="532" y="230">4 · ask the user</text>
+        <text class="p5bB" x="532" y="248">shows what will go</text>
+        <text class="p5bB" x="532" y="263">before this block</text>
+        <text class="p5bB" x="532" y="278">runs</text>
+
+        <text class="p5bL" x="692" y="230">5 · user decides</text>
+        <text class="p5bS" x="692" y="248">no: nothing deleted</text>
+        <text class="p5bS" x="692" y="263">yes: only then it runs</text>
+
+        <text class="p5bA" x="40" y="332">THE RED-TEAM NUMBERS FROM THE SAME POST</text>
+
+        <text class="p5bV" x="52" y="370">123</text>
+        <text class="p5bS" x="52" y="388">test cases</text>
+        <text class="p5bV" x="262" y="370">29</text>
+        <text class="p5bS" x="262" y="388">attack scenarios</text>
+        <text class="p5bV" x="472" y="370">23.6%</text>
+        <text class="p5bS" x="472" y="388">attacks succeeded</text>
+        <text class="p5bS" x="472" y="404">without mitigations</text>
+        <text class="p5bV" x="682" y="370">11.2%</text>
+        <text class="p5bS" x="682" y="388">with mitigations</text>
+        <text class="p5bS" x="682" y="404">autonomous mode</text>
+
+        <text class="p5bN" x="30" y="440">The gate does not stop the agent reading the injection. It stops the irreversible step running on it.</text>
+        <text class="p5bN" x="30" y="458">Source: Anthropic, Piloting Claude in Chrome, August 25, 2025. Read in October 2026.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the injected text reaches the agent on both paths; only the gate between the decision and the deletion changes the ending</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The mailbox hygiene email<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>In "Piloting Claude in Chrome" (August 25, 2025), Anthropic published the red-team results for a browser agent before releasing it more widely: 123 test cases across 29 attack scenarios, with attacks succeeding 23.6 percent of the time without mitigations and 11.2 percent with them, in autonomous mode. One of the examples is the case in the figure. An email claimed that emails "needed to be deleted" for "mailbox hygiene" and that "no additional confirmation required". Before the defences, Claude deleted the user's emails without confirmation.</p>
+        <p>Notice what the attacker needed: nothing but the ability to send an email. The agent was doing a legitimate task in the user's inbox, read a message, and treated an instruction inside that message as part of its job. Anthropic's computer-use documentation says the same thing plainly: "In some circumstances, Claude will follow commands found in content even when they conflict with your instructions." The listed defences include site-level permissions and "Action confirmations: Claude asks users before taking high-risk actions like publishing, purchasing, or sharing personal data."</p>
+        <p>Read 11.2 percent for what it is: better, and not zero. That is the reason the gate exists. Mitigations lower how often the agent is fooled; a confirmation before the irreversible step limits what being fooled costs.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The four precautions, and why per block<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Anthropic's computer-use tool documentation lists four precautions under security considerations: run the agent in a dedicated virtual machine or container with minimal privileges; avoid giving the model access to sensitive data such as account login information; limit internet access to an allowlist of domains; and ask "a human to confirm decisions that might result in meaningful real-world consequences and any tasks requiring affirmative consent, such as accepting cookies, completing financial transactions, or agreeing to terms of service."</p>
+        <p>The fourth comes with a timing rule that is easy to miss: "If your application asks a human to confirm consequential actions, make that check before each block runs, because a batch can complete a multistep action within one turn." One yes at the start of a session does not cover the fifth step of a batch the agent assembled later. For your own setup the translation is simple: if a tool offers "confirm once" and "confirm each action", the second is the one that matches the documentation.</p>
+        <p>How to build guardrails into an agent, the architecture and the types, is its own subject: <a href="https://phoebefu6.github.io/learn-ai-agents-with-phoebe/courses/a4-risk-governance.html">AI Agents a4 ↗</a> and <a href="https://phoebefu6.github.io/learn-ai-agents-with-phoebe/courses/b7-guardrails.html">AI Agents b7 ↗</a>. Here you sit in the user's chair and decide where your own yes goes.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>"No additional confirmation required."</strong> The attacker in Anthropic's example did not break anything. They wrote a sentence that told the agent the safety step was unnecessary, and before defences, the agent agreed. Any confirmation that the content being processed can switch off is not a confirmation. The gate has to live outside the mail, in the tool's own settings or in your hands, where no email can reach it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the delegation ladder</span>
+      <h2>Read, label, draft, send, delete</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">Session 1's third question was "can you undo it before anyone sees?". Applied to mail, it sorts every power an assistant can hold onto five rungs. The lower three keep you as the first to see a mistake. From send upward, someone else sees it first, or nobody does.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 484" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Five rungs rising left to right. Read, for example gmail.readonly: no undo needed, seen by nobody, default yes. Label, gmail.labels: undo in one click, seen only by you, default yes. Draft, Mail.ReadWrite: undo by deleting the draft, seen only by you, default yes where send is separate. A dashed line marks one-way from here. Send, Mail.Send: no undo, seen first by the recipient, default confirm each message. Delete, mail.google.com: undo from trash or never, seen by nobody until it is missed, default never. Below, the quiet one: gmail.settings.basic can change settings and filters, and a filter can automatically forward mail from then on, a standing rule; never grant it.">
+        <defs>
+          <filter id="p5cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="57" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p5cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p5cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p5cH { font: 800 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5cL { font: 600 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5cS { font: 400 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+          .p5cB { font: 800 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #6B3A00; }
+          .p5cA { font: 700 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #8957A2; }
+          .p5cN { font: 400 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p5cH" x="30" y="26">FIVE RUNGS: HOW LONG A MISTAKE TAKES TO UNDO, AND WHO SEES IT FIRST</text>
+
+        <g filter="url(#p5cSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- doodle anchor: a clock -->
+          <circle cx="840" cy="22" r="11"/>
+          <path d="M840 22 L840 15 M840 22 L846 25"/>
+          <!-- the rungs -->
+          <rect x="40" y="236" width="152" height="104" rx="6" fill="#FFFFFF" transform="rotate(-0.6 116 288)"/>
+          <rect x="200" y="212" width="152" height="128" rx="6" fill="#FFFFFF" transform="rotate(0.5 276 276)"/>
+          <rect x="360" y="188" width="152" height="152" rx="6" fill="#F6F0FA" transform="rotate(-0.4 436 264)"/>
+          <rect x="520" y="164" width="152" height="176" rx="6" fill="#FFFFFF" transform="rotate(0.4 596 252)"/>
+          <rect x="680" y="140" width="152" height="200" rx="6" fill="#FFFFFF" transform="rotate(-0.5 756 240)"/>
+          <!-- one-way line -->
+          <path d="M516 70 L516 344" stroke="#9C5600" stroke-dasharray="8 6"/>
+          <!-- settings box -->
+          <rect x="30" y="378" width="820" height="66" rx="8" fill="url(#p5cHc)" transform="rotate(0.2 440 411)"/>
+        </g>
+
+        <text class="p5cB" x="516" y="60" text-anchor="middle">one-way from here: a mistake is out before you see it</text>
+        <text class="p5cA" x="200" y="170">reversible: you see it first</text>
+
+        <text class="p5cH" x="50" y="256">read</text>
+        <text class="p5cA" x="50" y="272">gmail.readonly</text>
+        <text class="p5cS" x="50" y="290">undo: none needed</text>
+        <text class="p5cS" x="50" y="306">seen by: nobody</text>
+        <text class="p5cB" x="50" y="324">default: yes</text>
+
+        <text class="p5cH" x="210" y="232">label</text>
+        <text class="p5cA" x="210" y="248">gmail.labels</text>
+        <text class="p5cS" x="210" y="266">undo: one click</text>
+        <text class="p5cS" x="210" y="282">seen by: only you</text>
+        <text class="p5cB" x="210" y="300">default: yes</text>
+
+        <text class="p5cH" x="370" y="208">draft</text>
+        <text class="p5cA" x="370" y="224">Mail.ReadWrite</text>
+        <text class="p5cS" x="370" y="242">undo: delete it</text>
+        <text class="p5cS" x="370" y="258">seen by: only you</text>
+        <text class="p5cB" x="370" y="276">default: yes, where</text>
+        <text class="p5cB" x="370" y="292">send is separate</text>
+
+        <text class="p5cH" x="530" y="184">send</text>
+        <text class="p5cA" x="530" y="200">Mail.Send</text>
+        <text class="p5cS" x="530" y="218">undo: none</text>
+        <text class="p5cS" x="530" y="234">seen by: recipient</text>
+        <text class="p5cB" x="530" y="252">default: confirm</text>
+        <text class="p5cB" x="530" y="268">each message</text>
+
+        <text class="p5cH" x="690" y="160">delete</text>
+        <text class="p5cA" x="690" y="176">mail.google.com/</text>
+        <text class="p5cS" x="690" y="194">undo: trash, or never</text>
+        <text class="p5cS" x="690" y="210">seen by: nobody until</text>
+        <text class="p5cS" x="690" y="226">it is missed</text>
+        <text class="p5cB" x="690" y="244">default: never</text>
+
+        <text class="p5cA" x="40" y="364">the cost of a mistake grows to the right: time to undo it, and who meets it before you</text>
+
+        <text class="p5cL" x="44" y="400">The quiet one: gmail.settings.basic</text>
+        <text class="p5cS" x="44" y="418">"See, edit, create, or change your email settings and filters in Gmail."</text>
+        <text class="p5cB" x="44" y="434">A filter can auto-forward matching mail from then on: a standing rule, not a one-off action. Never grant it.</text>
+
+        <text class="p5cN" x="30" y="468">Scope wording read in October 2026; re-check before relying on it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - below the dashed line you are the first to meet a mistake; above it a recipient is, or nobody is, and the settings scope sits off the ladder because it keeps acting after you look away</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The default grant, rung by rung<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Read and label: yes.</strong> Nothing leaves your mailbox, a wrong label costs a click, and you are the only one who sees it. This is where sessions 2 to 4 operate. <strong>Draft: yes, where the platform separates it from send.</strong> On Graph that is Mail.ReadWrite without Mail.Send. On Gmail the drafting scope also sends, so a Gmail drafting assistant is really a send-rung grant, and should be treated as one. <strong>Send: only with a confirmation on each message,</strong> before it goes, shown with the recipients and the text. A sent message is read by someone else before you can undo it. <strong>Delete and settings: never</strong> for an assistant. A deletion may never be noticed, which makes it the most expensive mistake on the ladder, not the cheapest.</p>
+        <p>The ladder is about permissions, not about which kinds of message deserve a human. That second question, which tasks to keep out of automation entirely, is taught in <a href="https://phoebefu6.github.io/learn-ai-office-with-phoebe/courses/06-make-it-repeatable.html">AI Office, session 6 ↗</a>.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why a settings scope is worse than a delete<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every rung on the ladder is an action: it happens once, at a moment, and the agent log in session 6 can show it. gmail.settings.basic is different. Google describes it as "See, edit, create, or change your email settings and filters in Gmail.", and Gmail's own help says a filter can "send email to a label, or archive, delete, star, or automatically forward". A filter that forwards is a standing rule: created once, then acting on every matching message for as long as it exists, without the agent being involved again.</p>
+        <p>That makes it the one grant where revoking the app is not enough. If an app ever held a settings scope, revoke it and then open your filters and forwarding settings and read what is there. Session 6 adds that check to the weekly review.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The filter nobody remembers making.</strong> Gmail's help lists "automatically forward" among the things a filter can do. A forwarding filter created by an app you tried once keeps working after you have forgotten the app: there is no action to notice, because the action happens on every new matching message. When you audit tonight, an app with a settings scope gets two checks: its access, and whatever it left behind in your filters.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Audit every app that can touch your mailbox</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">Most people have granted more mail access than they remember, to tools they tried once. Tonight you list every one, write its scope in plain words, place it on the ladder, cut anything granted above its job, and write a one-line slip for each assistant you keep.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A constructed audit table with four columns: app, scope in plain words, rung, and keep, narrow or revoke. AI email assistant, asked for gmail.compose: write drafts and send as me, Gmail has no draft-only scope; rung send; keep, confirm each send. Meeting scheduler, asked for mail.google.com: read, send and permanently delete all mail past the trash; rung delete; revoke, a calendar tool needs no mail. Unsubscribe helper, gmail.modify, unused: read, compose and send, no permanent delete; rung send; revoke, not opened in a year.">
+        <defs>
+          <filter id="p5dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="59" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p5dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p5dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p5dH { font: 800 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5dL { font: 600 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #241A2E; }
+          .p5dS { font: 400 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+          .p5dB { font: 800 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #6B3A00; }
+          .p5dA { font: 700 11px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #8957A2; }
+          .p5dN { font: 400 12px Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p5dH" x="30" y="26">MY MAILBOX ACCESS AUDIT, ONE ROW PER APP (CONSTRUCTED)</text>
+
+        <g filter="url(#p5dSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- doodle anchor: a pencil -->
+          <path d="M800 32 L834 10 L842 18 L808 40 Z M800 32 L798 42 L808 40"/>
+          <!-- header and rows -->
+          <rect x="40" y="44" width="800" height="30" rx="4" fill="#F6F0FA" transform="rotate(-0.3 440 59)"/>
+          <rect x="40" y="80" width="800" height="52" rx="4" fill="#FFFFFF" transform="rotate(0.3 440 106)"/>
+          <rect x="40" y="136" width="800" height="52" rx="4" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-0.3 440 162)"/>
+          <rect x="40" y="192" width="800" height="52" rx="4" fill="#FFFFFF" transform="rotate(0.3 440 218)"/>
+          <!-- column dividers, inside each row only -->
+          <path d="M222 50 L222 68 M528 50 L528 68 M642 50 L642 68"/>
+          <path d="M222 88 L222 124 M528 88 L528 124 M642 88 L642 124"/>
+          <path d="M222 144 L222 180 M528 144 L528 180 M642 144 L642 180"/>
+          <path d="M222 200 L222 236 M528 200 L528 236 M642 200 L642 236"/>
+        </g>
+
+        <text class="p5dA" x="52" y="64">APP</text>
+        <text class="p5dA" x="234" y="64">SCOPE IN PLAIN WORDS</text>
+        <text class="p5dA" x="540" y="64">RUNG</text>
+        <text class="p5dA" x="654" y="64">KEEP, NARROW OR REVOKE</text>
+
+        <text class="p5dL" x="52" y="102">AI email assistant</text>
+        <text class="p5dS" x="52" y="120">asked for gmail.compose</text>
+        <text class="p5dL" x="234" y="102">write drafts, and send as me</text>
+        <text class="p5dS" x="234" y="120">Gmail has no draft-only scope</text>
+        <text class="p5dB" x="540" y="110">send</text>
+        <text class="p5dL" x="654" y="102">keep, confirm each send</text>
+        <text class="p5dS" x="654" y="120">slip written below</text>
+
+        <text class="p5dL" x="52" y="158">Meeting scheduler</text>
+        <text class="p5dS" x="52" y="176">asked for mail.google.com</text>
+        <text class="p5dL" x="234" y="158">read, send, permanently delete</text>
+        <text class="p5dS" x="234" y="176">all mail, past the trash</text>
+        <text class="p5dB" x="540" y="166">delete</text>
+        <text class="p5dB" x="654" y="158">revoke</text>
+        <text class="p5dS" x="654" y="176">a calendar tool, not mail</text>
+
+        <text class="p5dL" x="52" y="214">Unsubscribe helper</text>
+        <text class="p5dS" x="52" y="232">gmail.modify, unused</text>
+        <text class="p5dL" x="234" y="214">read, compose and send</text>
+        <text class="p5dS" x="234" y="232">no permanent delete</text>
+        <text class="p5dB" x="540" y="222">send</text>
+        <text class="p5dL" x="654" y="214">revoke</text>
+        <text class="p5dS" x="654" y="232">not opened in a year</text>
+
+        <text class="p5dN" x="30" y="268">Constructed example: three made-up apps, not a real account. Your list will differ, and is usually longer.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the highlighted row is the common find: a tool whose job is small, holding the widest scope on the platform</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Find the list.</strong> Open your Google Account's page for third-party apps with account access, or your Microsoft account's app permissions page. Menu names move between releases, so if the path below does not match, search your account settings for "third-party" or "app permissions". List every app with mail or calendar access, including ones you no longer use.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · where to look</span>Google: Google Account, Security, your connections to third-party apps and services
+Microsoft: Microsoft account, Privacy or Security, apps that can access your data
+Work account? Your admin may manage this list. Write down what you can see and ask IT for the rest.
+
+App | what it said it does | last used</div>
+      </div>
+      <div class="step">
+        <p><strong>Write each scope in plain words.</strong> Click into each app and copy what it is allowed to do. Then translate it using only the Part 1 table, so the assistant helping you cannot invent a gentler reading.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · plain words, from my table only</span>Below is a table of mail scopes with the platform's own wording, then a list of apps and the access each one shows.
+For each app, write one line: what it can read, whether it can draft, whether it can send, whether it can delete, whether it can change settings or filters.
+Use only the wording in my table. If an app's access is not in the table, write "not in my table" and do not guess.
+
+[paste the Part 1 table]
+[paste each app and the access it shows]</div>
+      </div>
+      <div class="step">
+        <p><strong>Place each app on the ladder.</strong> An app sits on its highest rung, not its usual one: an assistant that drafts on Gmail sits on send, because that is what gmail.compose permits. Any settings or filter access goes in its own column.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · one rung per app</span>App                 Highest rung   Settings or filters?
+AI email assistant  send           no
+Meeting scheduler   delete         no
+Unsubscribe helper  send           no
+(constructed example; your rows will differ)</div>
+      </div>
+      <div class="step">
+        <p><strong>Revoke anything granted above its job.</strong> For each row ask: what is the lowest rung this app needs to do the thing I use it for? If its rung is higher, revoke it. If the app is worth keeping, reconnect it and read the consent screen this time; if it asks for the same wide scope again, that is your answer about the app. If an app ever had settings access, open your filters and forwarding settings afterwards and read them.</p>
+      </div>
+      <div class="step">
+        <p><strong>Write a permission slip for each assistant you keep.</strong> One line, in your words, kept somewhere you will see it in session 6. The slip is what you decided; the scope is what the platform enforces. Where they differ, the gap is the risk you are choosing to carry.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the slip, one line each</span>AI email assistant: reads and labels; drafts; never sends without my yes on each message; reviewed weekly.
+  Scope it holds: gmail.compose (drafts AND send). Gap: send is a behaviour, not a limit.
+Calendar helper: reads my calendar only; no mail access; reviewed monthly.</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Re-read the strings before you rely on them.</strong> Every scope name and quoted sentence on this page was read in October 2026. Platforms rename scopes and reword consent screens; the habit of reading the slip outlasts any one version of it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 6</h2>
+      <span class="tag exercise">20 min, once</span>
+    </div>
+    <ol>
+      <li><strong>Finish the audit</strong> for every account you read mail in, personal and work. A work account you cannot see fully counts as a row: write "managed by IT" and what you asked them.</li>
+      <li><strong>Read one consent screen in full</strong> the next time any app asks for mail access, before clicking. Write down its verbs and the rung they put it on.</li>
+      <li><strong>Find your tools' confirmation settings.</strong> For each assistant you kept that can send, check whether it confirms once or before each action, and switch it to each action where it can.</li>
+      <li><strong>Bring your permission slips to session 6.</strong> The weekly review checks each assistant against its slip, so the slips are its first input.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 5 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · An assistant connected to Gmail holds gmail.compose and says it only writes drafts. What does the scope itself allow?</p>
+      <button class="qopt" type="button">A · Drafts only; sending needs a separate scope it does not hold</button>
+      <button class="qopt" type="button">B · Sending only; drafts need gmail.modify</button>
+      <button class="qopt" type="button">C · "Manage drafts and send emails": both, because Gmail has no draft-only scope</button>
+      <button class="qopt" type="button">D · Reading and permanently deleting all mail</button>
+      <p class="qwhy">Google's table describes gmail.compose as "Manage drafts and send emails." "Drafts only" is the app's behaviour, not a limit the platform enforces, so plan around the send rung.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · On Microsoft Graph, what does the delegated Mail.ReadWrite permission include and exclude?</p>
+      <button class="qopt" type="button">A · It can create, read, update and delete email, and it cannot send mail</button>
+      <button class="qopt" type="button">B · It can send mail, and it cannot delete</button>
+      <button class="qopt" type="button">C · It can read mail only, without bodies or attachments</button>
+      <button class="qopt" type="button">D · Everything, including sending and changing settings</button>
+      <p class="qwhy">Microsoft's reference: "create, read, update, and delete email in user mailboxes. Does not include permission to send mail." Graph separates draft from send, and the price is that the drafting side also deletes.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Where does a human confirmation belong for an agent that can take consequential actions in your mail?</p>
+      <button class="qopt" type="button">A · Once, when you first connect the app</button>
+      <button class="qopt" type="button">B · In a summary after the agent finishes, so you can review what it did</button>
+      <button class="qopt" type="button">C · Inside the email being processed, so the sender can approve it</button>
+      <button class="qopt" type="button">D · Before each block of actions runs, because a batch can complete a multistep action within one turn</button>
+      <p class="qwhy">Anthropic's computer-use documentation says to make the check "before each block runs". A confirmation after the fact is a notification, and one that content can switch off, as in the mailbox hygiene email, is no gate at all.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Google for Developers, Choose Gmail API scopes</span><span class="note">Read at source in October 2026: wording and sensitivity tag for each Gmail scope quoted, the absence of a draft-only scope, gmail.settings.basic, and "choose the most narrowly focused scope possible"</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Microsoft Learn, Microsoft Graph permissions reference</span><span class="note">Read at source in October 2026: Mail.ReadBasic, Mail.Read, Mail.ReadWrite (includes delete, excludes send) and Mail.Send, delegated</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Anthropic, Computer use tool, Security considerations</span><span class="note">Read at source: the four precautions, following commands found in content, and the confirm-before-each-block rule</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Anthropic (2025), Piloting Claude in Chrome, August 25, 2025</span><span class="note">Read at source: 123 test cases, 29 scenarios, 23.6 to 11.2 percent in autonomous mode, the mailbox hygiene example, action confirmations</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Google Gmail Help, Create rules to filter your emails</span><span class="note">Read at source: a filter can automatically forward, which makes a settings scope a standing rule</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Google Account and Microsoft account app-access pages</span><span class="note">Named, not walked through; menu paths change between releases, so the build-along gives a search term as well as a path</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">OpenAI agent documentation</span><span class="note">Could not be read at source in this build, so not cited</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The scope is the permission</b><span>What the app says it does is behaviour. The consent-screen sentence is what it may do.</span></div>
+      <div class="cheat-item"><b>Gmail: draft means send</b><span>gmail.compose: "Manage drafts and send emails." No draft-only Gmail scope exists.</span></div>
+      <div class="cheat-item"><b>Graph: a wall, and a catch</b><span>Mail.ReadWrite drafts but cannot send. It can delete. Sending is Mail.Send.</span></div>
+      <div class="cheat-item"><b>Confirm before each block</b><span>Not once at the start, not after. A batch can finish a multistep action in one turn.</span></div>
+      <div class="cheat-item"><b>The default grant</b><span>Read and label yes. Draft where send is separate. Send with a yes per message. Delete never.</span></div>
+      <div class="cheat-item"><b>Settings are standing rules</b><span>A filter can auto-forward forever. Never grant it; if it was granted, read your filters.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You now have the pieces: a log, triage rules with a measured precision, an open-loops list, and a permission slip for every assistant. Pieces drift. Session 6 is the weekly review that keeps them honest: sweep the loops, read the agent log against each slip, re-score the rules on fresh labels, and write the whole system on one page.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 5 of 6 · learn-ai-productivity-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="04-the-triage-bench.html">← Prev: The triage bench</a> &nbsp;·&nbsp; <a href="06-the-personal-ops-review.html">Next: The personal ops review →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=2"></script>
+</body>
+</html>

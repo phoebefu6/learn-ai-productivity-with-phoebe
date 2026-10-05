@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 4 of 6. 390 real Enron messages, each labelled by what its owner actually did with it. Write triage rules, and the page counts flagged share, precision and recall against a base rate of 25.9 percent, in your browser.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The triage bench - learn ai productivity with phoebe">
+<meta property="og:description" content="Session 4 of 6. Flag everything and recall is 100 percent while precision sits at the base rate. The word urgent hits zero. The best header rule halves the pile at 50 percent precision.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/courses/04-the-triage-bench.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The triage bench - learn ai productivity with phoebe">
+<meta name="twitter:description" content="Session 4 of 6. Triage rules scored against real labels, counted live.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 4 · The triage bench - learn ai productivity with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=2">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-productivity-with-phoebe</a> / Session 4 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI Productivity with Phoebe · Session 4 of 6</div>
+    <h1>The triage <span class="accent">bench</span></h1>
+    <p class="sub">Sessions 2 and 3 argued that a triage rule is a bet with a base rate under it. Tonight the argument becomes a count. Three hundred and ninety real messages from three Enron mailboxes sit in this page, and each one carries the label its owner gave it by what they did next: replied or forwarded, kept, or deleted. You write rules, or pick them from a ladder, and the page counts how many messages each rule flags, how many of those the owner really acted on, and how many acted-on messages it missed. Then you break it on purpose, to prove it was measuring the rule and not something else.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Bench night</span>
+      <span class="chip audience">Bring your three rules from session 2</span>
+      <span class="chip audience">No code tonight, all clicking</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:3">3-14 · How to read a flag</span>
+      <span class="a3" style="flex:6">14-40 · The ladder, then your rules, then the break</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">A bench is a fixed pile of messages and a fixed set of questions, so that when two rules give two answers the only thing that differed was the rule. The messages are real: 130 drawn with a seeded generator from each of three mailboxes in the public Enron corpus, Shelley Corman's, Kam Keiser's and Marie Heard's. The labels are real too, and they are not anyone's opinion of what mattered. They are what each owner did.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">measured = counted from the 390 rows</span>
+      <span class="pill">declared simulation = model labels made offline, replayed</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> The habit of reading precision next to the base rate before you believe any triage claim, a measured sense of how far header rules can get on a real inbox (about twice the base rate, no further), and a break test you can run on any filter or assistant someone sells you.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers what the bench measures</span>
+      <h2>A flag is a bet, and the base rate is the house</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">Every rule splits the pile in two: flagged and not flagged. Every message also has a truth: the owner acted on it or did not. Crossing the two gives four counts, and every readout on the bench is a ratio of those four. The one most people skip is the first: how much of the pile was worth acting on before any rule ran.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The 390 messages drawn as a hatched pile on the left with 101 of them marked as acted on, a base rate of 25.9 percent. A rule is drawn as a sieve. Below it, four boxes: hits are flagged messages the owner acted on, false alarms are flagged messages they did not, misses are acted-on messages left unflagged, and the rest were correctly left alone. Precision is hits over everything flagged; recall is hits over everything acted on.">
+        <defs>
+          <filter id="p4aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="41" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p4aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p4aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p4aH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p4aL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p4aS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p4aB { font: 800 11px Inter, sans-serif; fill: #6B3A00; }
+          .p4aV { font: 800 18px Inter, sans-serif; fill: #4A2A5E; }
+          .p4aN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p4aH" x="30" y="26">ONE RULE, ONE PILE, FOUR COUNTS</text>
+
+        <g filter="url(#p4aSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the pile -->
+          <path d="M40 250 C52 170 110 130 160 146 C206 160 226 210 232 250 Z" fill="url(#p4aHc)"/>
+          <path d="M150 250 C156 214 176 198 200 204 C218 210 226 232 228 250 Z" fill="#FCF1E3" stroke="#9C5600"/>
+          <!-- the sieve -->
+          <path d="M300 92 L470 92 L430 150 L340 150 Z" fill="#FFFFFF"/>
+          <path d="M350 108 L360 108 M380 108 L390 108 M410 108 L420 108 M365 126 L375 126 M395 126 L405 126" stroke="#5E5370"/>
+          <path d="M238 196 C262 170 276 140 292 124" marker-end="url(#p4aAr)"/>
+          <path d="M385 156 L385 190" marker-end="url(#p4aAr)"/>
+          <!-- four boxes -->
+          <rect x="520" y="60" width="150" height="76" rx="8" transform="rotate(-0.6 595 98)" fill="#FCF1E3" stroke="#9C5600"/>
+          <rect x="700" y="60" width="150" height="76" rx="8" transform="rotate(0.5 775 98)" fill="#FFFFFF"/>
+          <rect x="520" y="160" width="150" height="76" rx="8" transform="rotate(0.4 595 198)" fill="#F6F0FA"/>
+          <rect x="700" y="160" width="150" height="76" rx="8" transform="rotate(-0.4 775 198)" fill="#FFFFFF"/>
+          <path d="M476 118 L512 104" marker-end="url(#p4aAr)"/>
+        </g>
+
+        <text class="p4aL" x="136" y="272" text-anchor="middle">390 real messages</text>
+        <text class="p4aB" x="136" y="290" text-anchor="middle">101 acted on: 25.9%</text>
+        <text class="p4aS" x="136" y="306" text-anchor="middle">the base rate, before any rule</text>
+        <text class="p4aL" x="385" y="82" text-anchor="middle">a rule</text>
+        <text class="p4aS" x="385" y="214" text-anchor="middle">flagged or not</text>
+
+        <text class="p4aB" x="595" y="88" text-anchor="middle">HITS</text>
+        <text class="p4aS" x="595" y="106" text-anchor="middle">flagged, and</text>
+        <text class="p4aS" x="595" y="122" text-anchor="middle">the owner acted</text>
+        <text class="p4aL" x="775" y="88" text-anchor="middle">FALSE ALARMS</text>
+        <text class="p4aS" x="775" y="106" text-anchor="middle">flagged, and</text>
+        <text class="p4aS" x="775" y="122" text-anchor="middle">the owner did not</text>
+        <text class="p4aL" x="595" y="188" text-anchor="middle">MISSES</text>
+        <text class="p4aS" x="595" y="206" text-anchor="middle">acted on, but</text>
+        <text class="p4aS" x="595" y="222" text-anchor="middle">the rule let it pass</text>
+        <text class="p4aL" x="775" y="188" text-anchor="middle">LEFT ALONE</text>
+        <text class="p4aS" x="775" y="206" text-anchor="middle">not flagged,</text>
+        <text class="p4aS" x="775" y="222" text-anchor="middle">correctly</text>
+
+        <text class="p4aV" x="520" y="276">precision = hits / flagged</text>
+        <text class="p4aV" x="520" y="302">recall = hits / acted on</text>
+        <text class="p4aN" x="30" y="324">Lift is precision divided by the base rate. A rule with lift 1.00 knows nothing the pile did not already tell you.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber box is the only one you want to grow, and the base rate is what it has to beat</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Where the labels come from, and why that matters more than the rules<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Nobody sat down and marked these 390 messages as important. Each label comes from the owner's own mailbox, read after the fact:</p>
+        <table class="clean">
+          <tr><th>What the owner did</th><th>Label</th><th>In the 390</th></tr>
+          <tr><td>Replied to the sender with the same subject, or forwarded it, within 14 days; or filed it in a folder they had named <code>to_do</code></td><td><strong>act</strong></td><td>101</td></tr>
+          <tr><td>Did none of that, and kept it: left in the inbox or filed in a named folder</td><td>read</td><td>178</td></tr>
+          <tr><td>Did none of that, and it sits in their deleted items</td><td>archive</td><td>111</td></tr>
+        </table>
+        <p>This is the same move Gmail's Priority Inbox made in 2010: its engineers wrote that "importance ground truth is based on how the user interacts with a mail after delivery", because asking people to label their mail does not scale and their behaviour is already a label. It is also why the labels are imperfect in known ways. A phone call instead of a reply counts as not acted on. A reply under a new subject line is missed. And these mailboxes were frozen in 2001 and 2002, so some messages labelled read were simply never processed.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the bench reports four numbers and not one<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Flagged share</strong> is the cost: how much of your inbox the rule asks you to look at first. <strong>Precision</strong> is how often a flag is right. <strong>Recall</strong> is how much of the real work the flag catches. <strong>Lift</strong> is precision divided by the base rate, which is the only way to compare a rule across two inboxes where different shares of mail need action.</p>
+        <p>Any one of them alone can be gamed. Recall alone is maximised by flagging everything. Precision alone is maximised by flagging one message you are certain about. The bench always shows all of them because the trade between them is the decision, and Priority Inbox's own engineers said why it cannot be automated away: "users do not agree on the cost of a false positive versus a false negative."</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The three base rates are not the same.</strong> In Shelley Corman's 130 messages, 16 were acted on: 12.3 percent. In Kam Keiser's, 40: 30.8 percent. In Marie Heard's, 45: 34.6 percent. The same rule set moves differently in each, and a vendor quoting "90 percent of important mail caught" without saying how much of the mail was important has told you half a fact. Use the mailbox picker on the bench to see it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="bench">
+    <div class="section-kicker">
+      <span class="klabel">Build-along · the bench</span>
+      <h2>Seven rule sets, then yours, computed in front of you</h2>
+      <span class="tag demo">★ 26 min · the main event</span>
+    </div>
+    <p class="lede">Work down the ladder in order. For each rung read the verdict line, then the six readouts, then the misses and false alarms underneath: they are real messages, and reading five of each teaches more than any number. Then build your own in the two rule panels, and finish with the break button.</p>
+
+    <div id="triage-bench" class="mb-wrap"></div>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Start at the anti-lever.</strong> "Flag everything urgent" catches every message the owners acted on. Recall 100 percent. Precision 25.9 percent, which is the base rate to the decimal, because a flag on everything is the pile.</p>
+      </div>
+      <div class="step">
+        <p><strong>Climb to "A person, to me, three or fewer".</strong> Not an automated-looking sender, owner in To, at most three recipients. 165 flagged, 42.3 percent of the pile, precision 39.4 percent, recall 64.4 percent. Lift 1.52.</p>
+      </div>
+      <div class="step">
+        <p><strong>Then "...and a live thread or an ask".</strong> The same rule, plus a RE: subject or an ask word. 94 flagged, under a quarter of the pile, at 50.0 percent precision and 46.5 percent recall: lift 1.93. Half the flags are right, and more than half of the real work is now unflagged. That is the trade, measured.</p>
+      </div>
+      <div class="step">
+        <p><strong>Write your three rules from session 2 into the panels.</strong> Every change rescores the 390. Try to beat lift 1.93 without dropping recall under 46.5 percent. Most people cannot, and the misses table shows why: a lot of acted-on mail looks exactly like the mail that was not.</p>
+      </div>
+      <div class="step">
+        <p><strong>Press the break button.</strong> It shuffles the act labels across the 390 messages with a fixed seed. Every rule falls to the base rate within noise, because nothing a rule can see is connected to the shuffled labels any more. If a rule kept its precision after the shuffle, the bench would be measuring something other than the rule.</p>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Read it in this order.</strong> Base rate, then flagged share, then precision against the base rate, then recall. A precision figure read without the base rate beside it is the single most common way a triage tool is oversold, and the four-number readout exists so you never do it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers what the ladder finds</span>
+      <h2>About twice the base rate, and no further</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">The bench above computes these live; the numbers here are the ones it prints on all three mailboxes, written down so they can be argued with after class. A Python script written separately from the page reproduces every count.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Six rule sets as horizontal bars of precision against a dashed base-rate line at 25.9 percent. Flag everything: 25.9 percent precision, 100 percent recall. Subject says urgent: 5 messages flagged, 0 percent precision. From my company: 27.8 percent, recall 78.2. Addressed to me: 34.5 percent, recall 85.1. A person, to me, three or fewer: 39.4 percent, recall 64.4. With a live thread or an ask: 50.0 percent, recall 46.5.">
+        <defs>
+          <filter id="p4bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="43" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p4bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+        </defs>
+        <style>
+          .p4bH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p4bL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p4bS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p4bB { font: 800 11px Inter, sans-serif; fill: #6B3A00; }
+          .p4bV { font: 800 13px Inter, sans-serif; fill: #4A2A5E; }
+          .p4bN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p4bH" x="30" y="26">PRECISION OF EACH RUNG, AGAINST THE BASE RATE</text>
+        <text class="p4bS" x="440" y="26">bar = precision · 480px = 60% · right column = recall</text>
+
+        <g filter="url(#p4bSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="250" y="56" width="207" height="26" rx="3" fill="#FCF1E3" stroke="#9C5600"/>
+          <rect x="250" y="102" width="4" height="26" rx="2" fill="#FFFFFF"/>
+          <rect x="250" y="148" width="222" height="26" rx="3" fill="url(#p4bHc)"/>
+          <rect x="250" y="194" width="276" height="26" rx="3" fill="url(#p4bHc)"/>
+          <rect x="250" y="240" width="315" height="26" rx="3" fill="url(#p4bHc)"/>
+          <rect x="250" y="286" width="400" height="26" rx="3" fill="#F6F0FA" stroke="#4A2A5E"/>
+        </g>
+        <path d="M457 44 L457 326" stroke="#9C5600" stroke-width="1.6" stroke-dasharray="5 4" fill="none"/>
+        <text class="p4bB" x="457" y="342" text-anchor="middle">base rate 25.9%</text>
+
+        <text class="p4bL" x="240" y="74" text-anchor="end">Flag everything</text>
+        <text class="p4bV" x="468" y="74">25.9%</text>
+        <text class="p4bL" x="240" y="120" text-anchor="end">Subject says urgent</text>
+        <text class="p4bV" x="264" y="120">0.0%</text>
+        <text class="p4bS" x="300" y="120">5 flagged, 0 acted on</text>
+        <text class="p4bL" x="240" y="166" text-anchor="end">From my company</text>
+        <text class="p4bV" x="484" y="166">27.8%</text>
+        <text class="p4bL" x="240" y="212" text-anchor="end">Addressed to me</text>
+        <text class="p4bV" x="538" y="212">34.5%</text>
+        <text class="p4bL" x="240" y="258" text-anchor="end">Person, to me, 3 or fewer</text>
+        <text class="p4bV" x="577" y="258">39.4%</text>
+        <text class="p4bL" x="240" y="304" text-anchor="end">...and a thread or an ask</text>
+        <text class="p4bV" x="662" y="304">50.0%</text>
+
+        <text class="p4bS" x="790" y="50" text-anchor="middle">recall</text>
+        <text class="p4bL" x="790" y="74" text-anchor="middle">100.0%</text>
+        <text class="p4bL" x="790" y="120" text-anchor="middle">0.0%</text>
+        <text class="p4bL" x="790" y="166" text-anchor="middle">78.2%</text>
+        <text class="p4bL" x="790" y="212" text-anchor="middle">85.1%</text>
+        <text class="p4bL" x="790" y="258" text-anchor="middle">64.4%</text>
+        <text class="p4bL" x="790" y="304" text-anchor="middle">46.5%</text>
+
+        <text class="p4bN" x="30" y="384">Every step right on the precision bar was paid for on the recall column. Nothing on the ladder clears 2x the base rate.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - precision climbs from the base rate to 50 percent, and recall falls from 100 to 46.5 percent on the way</figcaption>
+    </figure>
+
+    <table class="clean">
+      <tr><th>Rule set</th><th>Flagged</th><th>Share</th><th>Precision</th><th>Recall</th><th>Lift</th></tr>
+      <tr><td><strong>Flag everything urgent</strong> (anti-lever)</td><td>390</td><td>100.0%</td><td>25.9%</td><td><strong>100.0%</strong></td><td>1.00</td></tr>
+      <tr><td>Subject says urgent, asap or important</td><td>5</td><td>1.3%</td><td><strong>0.0%</strong></td><td>0.0%</td><td>0.00</td></tr>
+      <tr><td>From my company</td><td>284</td><td>72.8%</td><td>27.8%</td><td>78.2%</td><td>1.07</td></tr>
+      <tr><td>Addressed to me</td><td>249</td><td>63.8%</td><td>34.5%</td><td>85.1%</td><td>1.33</td></tr>
+      <tr><td>A person, to me, three or fewer</td><td>165</td><td>42.3%</td><td>39.4%</td><td>64.4%</td><td>1.52</td></tr>
+      <tr><td>...and a live thread or an ask</td><td>94</td><td>24.1%</td><td><strong>50.0%</strong></td><td>46.5%</td><td><strong>1.93</strong></td></tr>
+      <tr><td>AI judge, replayed (declared simulation)</td><td>152</td><td>39.0%</td><td>34.9%</td><td>52.5%</td><td>1.35</td></tr>
+    </table>
+    <p class="mono" style="margin-top:6px">All three mailboxes, 390 messages, 101 acted on. Every cell is counted; the judge row replays labels a model produced offline.</p>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Finding 1: the word "urgent" caught nothing<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Five of the 390 subjects say urgent, asap or important. The owners acted on none of them. Five is too few to conclude that urgent mail is ignored, and the break button shows why: shuffle the labels and the same five messages score 60 percent by chance, three hits out of five. What the rung does show is that the keyword everyone reaches for first describes almost none of the mail people actually act on. Senders mark urgency; owners act on relationships and threads.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Finding 2: "from my company" is the base rate wearing a badge<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Internal senders are 72.8 percent of the pile, and 27.8 percent of them were acted on against 25.9 percent overall. Lift 1.07. The rule feels sensible because most of the mail you act on is internal, and that is exactly the trap: most of the mail you do not act on is internal too. A condition that is true of nearly everything carries nearly no information. The break button barely moves it, because there was almost nothing to break.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Finding 3: who it is addressed to beats what it says<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The two conditions that move precision are both about the envelope: is the owner in To rather than Cc, and is the recipient list short. Adding "not an automated-looking sender" takes the rule from 34.5 to 39.4 percent. The content conditions, a RE: subject or an ask word, add the last ten points but cost eighteen points of recall. This matches what Priority Inbox's engineers listed first among their features: "Social features are based on the degree of interaction between sender and recipient."</p>
+        <p>A caution that belongs next to the RE: condition: part of its edge comes from how the label is built. A thread the owner is already in has more of the owner's replies with that subject to match, so "RE:" partly predicts the label by construction. The bench says so rather than claiming the whole ten points.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Finding 4: the AI judge, replayed<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>No model runs in this page. Once, offline, on 5 October 2026, a real model read each of the 390 messages and answered act, read or archive: qwen2.5-coder:7b, a small open model run locally through Ollama at temperature 0, seeing exactly what the rules see, the envelope plus the first 160 characters of the body. Its answers ship as data and the bench replays them. It is the model that was available on the build machine, not a frontier model, and the page claims a measurement of that one run and nothing wider.</p>
+        <p>It flagged 152 messages, 39.0 percent of the pile, at 34.9 percent precision and 52.5 percent recall: lift 1.35, about where "addressed to me" sits and below the two best header rules. Across all three labels it agreed with what the owners did on 46.4 percent of messages, and it called only 25 messages archive where the owners deleted 111 without acting. Under the break button its precision falls to 26.3 percent, so it did learn something real from the text. On Marie Heard's mailbox alone it reaches 43.7 percent precision at 68.9 percent recall, and on Kam Keiser's it scores below that mailbox's base rate. The lesson is not that models lose to rules. It is that a judge's claim gets the same four numbers and the same break test as any rule, and this one, on this mail, did not earn its place over a three-condition filter.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the anti-lever and the break</span>
+      <h2>Flag everything, then shuffle everything</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">Two moves make a bench honest. The anti-lever shows the number a lazy rule gets, so nobody mistakes 100 percent recall for a result. The break shows the number any rule gets when the labels mean nothing, so nobody mistakes noise for skill.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Before and after the label shuffle, drawn as two panels. Left, real labels: the person rung at 39.4 percent precision, the thread rung at 50.0 percent, against a base rate of 25.9 percent. Right, labels shuffled with a fixed seed: the person rung falls to 27.3 percent and the thread rung to 23.4 percent, both at the base rate, while the five-message urgent rung jumps to 60 percent by chance.">
+        <defs>
+          <filter id="p4cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="47" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <marker id="p4cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p4cH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p4cL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p4cS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p4cB { font: 800 11px Inter, sans-serif; fill: #6B3A00; }
+          .p4cR { font: 800 11px Inter, sans-serif; fill: #991B1B; }
+          .p4cV { font: 800 16px Inter, sans-serif; fill: #4A2A5E; }
+          .p4cN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p4cH" x="30" y="26">THE BREAK TEST: SAME RULES, LABELS SHUFFLED WITH A FIXED SEED</text>
+
+        <g filter="url(#p4cSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="50" width="380" height="200" rx="12" transform="rotate(-0.4 230 150)" fill="#F6F0FA" stroke="#8957A2"/>
+          <rect x="460" y="50" width="380" height="200" rx="12" transform="rotate(0.4 650 150)" fill="#FEF2F2" stroke="#FCA5A5"/>
+          <path d="M424 150 L454 150" marker-end="url(#p4cAr)"/>
+          <!-- dice doodle -->
+          <rect x="430" y="96" width="20" height="20" rx="4" transform="rotate(12 440 106)" fill="#FFFFFF"/>
+        </g>
+
+        <text class="p4cL" x="62" y="80">Real labels</text>
+        <text class="p4cS" x="62" y="104">Person, to me, three or fewer</text>
+        <text class="p4cV" x="330" y="104" text-anchor="end">39.4%</text>
+        <text class="p4cS" x="62" y="136">...and a thread or an ask</text>
+        <text class="p4cV" x="330" y="136" text-anchor="end">50.0%</text>
+        <text class="p4cS" x="62" y="168">Subject says urgent (5 flagged)</text>
+        <text class="p4cV" x="330" y="168" text-anchor="end">0.0%</text>
+        <text class="p4cB" x="62" y="224">base rate 25.9%</text>
+
+        <text class="p4cL" x="482" y="80">Labels shuffled</text>
+        <text class="p4cS" x="482" y="104">Person, to me, three or fewer</text>
+        <text class="p4cV" x="750" y="104" text-anchor="end">27.3%</text>
+        <text class="p4cS" x="482" y="136">...and a thread or an ask</text>
+        <text class="p4cV" x="750" y="136" text-anchor="end">23.4%</text>
+        <text class="p4cS" x="482" y="168">Subject says urgent (5 flagged)</text>
+        <text class="p4cR" x="750" y="168" text-anchor="end">60.0%</text>
+        <text class="p4cR" x="482" y="200">3 hits in 5 by chance: small n lies loudly</text>
+        <text class="p4cB" x="482" y="224">base rate 25.9%</text>
+
+        <text class="p4cN" x="30" y="284">The rules that learned something fall to the base rate. The rule that flags five messages can land anywhere.</text>
+        <text class="p4cN" x="30" y="304">Read any precision figure with its flagged count beside it.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - after the shuffle the real rules collapse to the base rate, and the tiny one jumps to 60 percent, which is why a count goes next to every rate</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why a bench needs a number it can lose<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>If no input could make the bench report a worse number, it would not be measuring anything. The anti-lever proves the bottom exists: precision equal to the base rate, lift 1.00. The break proves the rules earned their lift from the labels and not from a quirk of the data: with the act labels shuffled, the person rung falls from 39.4 to 27.3 percent and the thread rung from 50.0 to 23.4 percent, both inside the noise around 25.9.</p>
+        <p>Run the same test on anything that claims to triage for you. Feed it a week of your mail where you know what you acted on, compare its flags to that, and ask what its precision would be if the flags were random. If the vendor cannot answer the second question, the first number is a press release.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What "flag everything urgent" looks like in a real office<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>It rarely looks like a rule. It looks like a culture where every message carries the red exclamation mark, every request says asap, and every inbox notification is on. Recall is perfect, nothing is ever missed, and every message gets the same attention, which means the 25.9 percent that needed action got no more of it than the 74.1 percent that did not. The bench gives it a number so the conversation can stop being about effort.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Gmail measured its own version of this.</strong> Priority Inbox reported about 80 percent accuracy, plus or minus 5, on its implicit importance label, and its engineers tuned thresholds so that false negatives ran three to four times false positives, because many people read mail they agree is not important. On 160,000 messages users marked by hand, error fell from 45 percent with one global model to 31 percent with per-user models and per-user thresholds. Personal ops is personal: the same rule cannot be right for Corman at a 12.3 percent base rate and Heard at 34.6.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 5</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Label one real week of your own mail</strong> by what you did: replied or forwarded, kept, deleted. Count the act share. That is your base rate, and it is the number every tool you are sold should be compared against.</li>
+      <li><strong>Run your best bench rule as a mail search</strong> over that week (session 2 has the operators). Count flagged, hits and misses by hand. Your lift is precision divided by your base rate.</li>
+      <li><strong>Read five of your own misses.</strong> Write one line on why each was acted on. Most people find the reason is not in the message at all: who sent it, what was said in a meeting, what happened yesterday.</li>
+      <li><strong>Bring one assistant or tool</strong> that touches your mail or calendar. Session 5 is about what you let it do.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 4 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · "Flag everything urgent" catches 100 percent of the messages the owners acted on. What is its precision on the bench, and why?</p>
+      <button class="qopt" type="button">A · 100 percent, because it never misses</button>
+      <button class="qopt" type="button">B · 50 percent, because half of all mail matters</button>
+      <button class="qopt" type="button">C · 25.9 percent, exactly the base rate, because flagging everything is the pile itself and tells you nothing the pile did not</button>
+      <button class="qopt" type="button">D · It cannot be computed when everything is flagged</button>
+      <p class="qwhy">Recall and precision trade against each other. Flagging all 390 gives recall 100 percent and precision 101 out of 390, the share of mail that was acted on before any rule ran. Lift 1.00 is the floor every real rule must beat.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · After the labels are shuffled, the five-message "urgent" rule shows 60 percent precision. What should you conclude?</p>
+      <button class="qopt" type="button">A · The urgent rule is the best rule once the noise is removed</button>
+      <button class="qopt" type="button">B · Nothing about urgency: three hits in five is what chance produces on a handful of messages, which is why a flagged count belongs next to every precision figure</button>
+      <button class="qopt" type="button">C · The shuffle is broken and should be re-seeded until urgent scores zero</button>
+      <button class="qopt" type="button">D · Urgent messages are acted on 60 percent of the time in general</button>
+      <p class="qwhy">With five flagged messages, one more or one fewer hit moves precision by 20 points. The rules that flag 94 and 165 messages fall to 23.4 and 27.3 percent under the shuffle, inside the noise around the 25.9 percent base rate. Small counts lie loudly in both directions.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · The best header rule reaches 50.0 percent precision at 46.5 percent recall. What is the honest summary?</p>
+      <button class="qopt" type="button">A · About twice the base rate: half its flags are right, it catches under half of the real work, and the misses mostly look like mail nobody acted on</button>
+      <button class="qopt" type="button">B · A failure, because 50 percent is a coin toss</button>
+      <button class="qopt" type="button">C · Good enough to auto-archive everything it does not flag</button>
+      <button class="qopt" type="button">D · Proof that header rules beat any AI judge</button>
+      <p class="qwhy">50 percent against a 25.9 percent base rate is lift 1.93, which is real and useful for ordering what you read first. It is not a reason to hide the other 53.5 percent of acted-on mail, and one bench on three 2001 mailboxes proves nothing about every judge.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Every count on the bench</span><span class="note">Computed in the browser from a seeded 390-message sample of three mailboxes in the CMU Enron Email Dataset (May 2015 version); an independent Python run reproduces every count</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Labels from the owner's own behaviour</span><span class="note">Replied or forwarded within 14 days or filed in to_do, kept, or deleted; the mapping and its known blind spots are printed on the widget</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Gmail Priority Inbox, Aberdeen, Pacovsky and Slater (2010)</span><span class="note">Read at source: action-based importance labels, social features first, about 80 percent accuracy, 45 to 31 percent error with personalisation</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The AI judge rung</span><span class="note">A declared simulation: labels a real local model produced offline once, replayed as data; one model, one prompt, one run, so the page claims a measurement of that run and nothing wider</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Whether these rules work on your mail</span><span class="note">Not claimed. Three mailboxes from 2001 and 2002; only the method and the base-rate habit transfer</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 4 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Base rate first</b><span>101 of 390 acted on: 25.9%. Corman 12.3%, Keiser 30.8%, Heard 34.6%.</span></div>
+      <div class="cheat-item"><b>Four numbers, always</b><span>Flagged share, precision, recall, lift. Any one alone can be gamed.</span></div>
+      <div class="cheat-item"><b>Flag everything</b><span>Recall 100%, precision 25.9%, lift 1.00. The floor, not a result.</span></div>
+      <div class="cheat-item"><b>The envelope beats the words</b><span>To me, short list, a person: 39.4%. Add a thread or an ask: 50.0% at 46.5% recall.</span></div>
+      <div class="cheat-item"><b>"Urgent" caught nothing</b><span>5 flagged, 0 acted on. Too few to conclude more than that.</span></div>
+      <div class="cheat-item"><b>The break test</b><span>Shuffle the labels: real rules fall to the base rate. Count next to every rate.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Tonight a flag only changed what you read first. Session 5 is about the moment a tool stops flagging and starts acting: reading your mail, drafting in it, sending from it, deleting from it. The permission that separates those is a single scope string on a consent screen, and on one of the two big mail platforms the scope that lets an assistant write a draft also lets it send.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 4 of 6 · learn-ai-productivity-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="03-follow-ups-that-hold.html">← Prev: Follow-ups that do not fall through</a> &nbsp;·&nbsp; <a href="05-read-draft-send.html">Next: Read, draft, send →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/triage-sample.js?v=1"></script>
+<script src="../assets/triage-judge.js?v=1"></script>
+<script src="../assets/triage-live.js?v=1"></script>
+<script src="../assets/app.js?v=2"></script>
+</body>
+</html>

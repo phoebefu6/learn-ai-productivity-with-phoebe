@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Six sessions on personal ops with AI: where your week actually goes, triage rules against an AI judge, follow-ups that do not fall through, agents scoped to read, draft or send, and the weekly review that keeps it honest. A triage bench scores your rules on 390 real Enron messages. Free, by Phoebe Fu.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Learn AI Productivity with Phoebe">
+<meta property="og:description" content="Personal ops with AI, measured. Flag everything and precision equals the base rate of 25.9 percent; the best header rule reaches 50 percent at 46.5 percent recall, on 390 real messages.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learn AI Productivity with Phoebe">
+<meta name="twitter:description" content="Triage, follow-ups, scoped agents and the weekly review, with a bench that counts precision and recall on real mail in your browser.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Learn AI Productivity with Phoebe</title>
+<link rel="stylesheet" href="assets/style.css?v=2">
+<style>
+
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: 1; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--indigo));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--indigo-soft); border-top-color: var(--diff, var(--indigo)); box-shadow: 0 8px 28px rgba(var(--shadow-rgb),.16); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--indigo-50); color: var(--indigo-deep); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--indigo); color: #fff; }
+  .path .parr { color: var(--muted); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,var(--indigo-50)); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+
+  .not-this { border: 1px solid var(--hairline); border-left: 4px solid var(--clay); border-radius: var(--radius); background: #fff; padding: 1.1rem 1.3rem; margin-top: 1.2rem; }
+  .not-this h3 { font-size: .95rem; font-weight: 800; margin-bottom: .5rem; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn with Phoebe · Productivity</div>
+    <h1>Learn <span class="accent">AI Productivity</span> with Phoebe</h1>
+    <p class="sub">Personal ops is the work around the work: deciding what to read, answering, chasing what you are owed, tracking what you owe, and checking once a week that nothing slipped. It repeats, so it is the part of a job most worth handing to software, and it fails silently, so it is the part where handing it over badly costs the most. Six sessions build one system for it and measure every step: where your week goes, how good a triage rule really is against a base rate, what an assistant is actually allowed to do in your mailbox, and the weekly review that keeps all of it honest.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="6">6</b><span>sessions</span></div>
+      <div class="stat"><b data-count="390">390</b><span>real messages on the bench</span></div>
+      <div class="stat"><b data-count="7">7</b><span>rule sets on the ladder</span></div>
+      <div class="stat"><b data-count="3">3</b><span>real mailboxes</span></div>
+      <div class="stat"><b data-count="45">45</b><span>min per session</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>The six sessions 🎯 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· from a five-day log to a system you review</span></h2>
+      <p class="plede">The running artifact is <strong>your own week</strong>: your log, your rules, your open-loops list, your scopes, your review. The bench uses <strong>390 real messages</strong> from three mailboxes in the public Enron email corpus, each labelled by what its owner actually did with it.</p>
+    </div>
+
+    <div class="course-grid">
+      <a class="course-card" href="courses/01-where-your-week-goes.html" style="--diff:#34D399">
+        <span class="cicon">⏱️</span>
+        <span class="cnum">Session 1 · start here</span>
+        <h3>Where your week actually goes</h3>
+        <p>The famous 28 percent of the week on email, traced to its source and its small print; "interrupted every two minutes" and whose two minutes; a five-day log by loop and three questions for which loop to hand over first.</p>
+        <span class="meta"><span class="pill amber">▶ Start here</span></span>
+      </a>
+      <a class="course-card" href="courses/02-rules-against-a-judge.html" style="--diff:#FBBF24">
+        <span class="cicon">⚖️</span>
+        <span class="cnum">Session 2 · triage</span>
+        <h3>Rules against a judge</h3>
+        <p>Triage as a bet against a base rate. Rules you can read set against a model that reads the mail, where labels come from, and three rules for your own inbox in search-operator syntax, tested before they become filters.</p>
+        <span class="meta"><span class="pill">precision, recall, base rate</span></span>
+      </a>
+      <a class="course-card" href="courses/03-follow-ups-that-hold.html" style="--diff:#FBBF24">
+        <span class="cicon">🧷</span>
+        <span class="cnum">Session 3 · follow-ups</span>
+        <h3>Follow-ups that do not fall through</h3>
+        <p>Requests and commitments as the unit of follow-up, why even careful annotators disagree on them, the open-loops list of what you owe and what you are waiting for, and the research disagreement about why writing it down helps.</p>
+        <span class="meta"><span class="pill">the open-loops list</span></span>
+      </a>
+      <a class="course-card" href="courses/04-the-triage-bench.html" style="--diff:#F87171">
+        <span class="cicon">🎛️</span>
+        <span class="cnum">Session 4 · bench night</span>
+        <h3>The triage bench</h3>
+        <p>390 real messages, seven rule sets and your own, precision and recall counted in your browser against a 25.9 percent base rate. "Flag everything" gets recall 100 and teaches nothing. Then the break button.</p>
+        <span class="meta"><span class="pill amber">★ the bench</span></span>
+      </a>
+      <a class="course-card" href="courses/05-read-draft-send.html" style="--diff:#FB923C">
+        <span class="cicon">🔐</span>
+        <span class="cnum">Session 5 · agents</span>
+        <h3>Read, draft, send</h3>
+        <p>The scope string on the consent screen is the real permission. On one platform the draft scope also sends. Human confirmation where it bites, the email that talked an agent into deleting mail, and what you never delegate.</p>
+        <span class="meta"><span class="pill">scopes, not settings</span></span>
+      </a>
+      <a class="course-card" href="courses/06-the-personal-ops-review.html" style="--diff:#FB923C">
+        <span class="cicon">🗓️</span>
+        <span class="cnum">Session 6 · the system</span>
+        <h3>The personal ops review</h3>
+        <p>The weekly review adapted for ops, with the assistant on the sweep and you on the decisions; the agent log check, the monthly rule re-score on fresh labels, the cadence, and a one-page spec for your system.</p>
+        <span class="meta"><span class="pill amber">🔒 your ops spec</span></span>
+      </a>
+    </div>
+
+    <div class="diff-legend">
+      <span><i style="background:#34D399"></i>start here</span>
+      <span><i style="background:#FBBF24"></i>core</span>
+      <span><i style="background:#FB923C"></i>hands-on, higher stakes</span>
+      <span><i style="background:#F87171"></i>bench night</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>Your passport 🎫</h2>
+      <p class="plede">Clear all three quiz questions in a session and it gets stamped. Six stamps means you can measure your own week, score a triage rule honestly, keep an open-loops list, scope an assistant before it touches your mail, and run a review that catches what slipped. Stamps live in this browser only.</p>
+    </div>
+    <div class="pp-strip"></div>
+  </section>
+
+  <section class="section">
+    <div class="not-this">
+      <h3>What this is not, so you land in the right place 🧭</h3>
+      <table class="clean">
+        <tr><th>If your question is</th><th>Go here instead</th></tr>
+        <tr><td>How do I use AI inside documents, spreadsheets, meeting notes and the weekly report?</td><td><a href="https://phoebefu6.github.io/learn-ai-office-with-phoebe/">AI Office ↗</a></td></tr>
+        <tr><td>How do I capture, organise and find my notes?</td><td><a href="https://phoebefu6.github.io/learn-pkm-with-phoebe/">Personal Knowledge Management ↗</a></td></tr>
+        <tr><td>How do I build the trigger-and-action workflow that runs it for me?</td><td><a href="https://phoebefu6.github.io/learn-automation-with-phoebe/">Life and Work Automation ↗</a></td></tr>
+        <tr><td>How is an agent built: the loop, the tools, the guardrails, the evals?</td><td><a href="https://phoebefu6.github.io/learn-ai-agents-with-phoebe/">AI Agents ↗</a></td></tr>
+        <tr><td>How do I write an email that lands?</td><td><a href="https://phoebefu6.github.io/learn-ai-writing-with-phoebe/">AI Writing ↗</a></td></tr>
+        <tr><td><strong>I want my inbox, follow-ups and assistants to run as a system, and to know with numbers whether it works.</strong></td><td><strong>you are in the right place</strong></td></tr>
+      </table>
+      <p style="margin-top:.7rem;font-size:.86rem;color:var(--muted)"><strong>Personal ops, measured.</strong> Where the time goes, how good a rule is against a base rate, what an assistant is allowed to do, and the review that catches what slipped. The material that sibling courses teach well is linked from here rather than repeated.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Three doors into the same conviction: measure the loop first, give the assistant the smallest permission that does the job, and review what it did.</p>
+      <div class="path"><b>📥 My inbox is the problem</b>
+        <a class="pstep" href="courses/01-where-your-week-goes.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/02-rules-against-a-judge.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-the-triage-bench.html">4</a>
+        <span style="font-size:.82rem;color:var(--muted)">count the visits, write rules, score them against a base rate</span>
+      </div>
+      <div class="path"><b>🤖 Someone wants to give an agent my mailbox</b>
+        <a class="pstep" href="courses/04-the-triage-bench.html">4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-read-draft-send.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-the-personal-ops-review.html">6</a>
+        <span style="font-size:.82rem;color:var(--muted)">test its claims, scope it, review its log every week</span>
+      </div>
+      <div class="path"><b>🎯 The whole system</b>
+        <a class="pstep" href="courses/01-where-your-week-goes.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/02-rules-against-a-judge.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/03-follow-ups-that-hold.html">3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-the-triage-bench.html">4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-read-draft-send.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-the-personal-ops-review.html">6</a>
+        <span style="font-size:.82rem;color:var(--muted)">from a five-day log to a one-page ops spec you review weekly</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>What is honest here 🧾</h2>
+      <p class="plede">The bench is real public data, counted in your browser. Every statistic on the pages is quoted from the document it came from, with its scope; where a famous number is narrower than its reputation, the page says how.</p>
+    </div>
+    <table class="clean">
+      <tr><th>Claim</th><th>Status</th></tr>
+      <tr><td>Every count on the triage bench: flagged, precision, recall, lift, base rate</td><td><strong>Really computed</strong> in your browser from 390 messages of the CMU Enron Email Dataset (May 2015 version), with an independent Python run that reproduces every count</td></tr>
+      <tr><td>The act, read and archive labels</td><td><strong>From the owners' own behaviour:</strong> replied or forwarded within 14 days or filed in a to-do folder, kept, or deleted. The mapping and its blind spots are printed on the bench</td></tr>
+      <tr><td>The AI judge rung</td><td><strong>A declared simulation.</strong> No model runs in the page; a real local model labelled the 390 offline once, and its answers are replayed as data with the model, settings and date named</td></tr>
+      <tr><td>"28 percent of the week on email"</td><td><strong>Traced to the McKinsey 2012 report:</strong> interaction workers, 13.0 of 46.5 hours, from 2009 survey data. Taught with that scope</td></tr>
+      <tr><td>"Interrupted every two minutes"</td><td><strong>Quoted with Microsoft's own methodology note:</strong> pings received by the top 20 percent of users by volume</td></tr>
+      <tr><td>Gmail and Microsoft Graph mail permissions</td><td><strong>Quoted from the vendors' scope references</strong> as read in October 2026; re-verify before relying on them, because they change</td></tr>
+      <tr><td>Why an open-loops list helps</td><td><strong>Contested.</strong> A 2011 study found plan-making ends intrusive thoughts about unfinished goals; a 2025 meta-analysis found no memory advantage for unfinished tasks. Both are taught</td></tr>
+      <tr><td>The example week in session 1</td><td><strong>Constructed</strong> for teaching, labelled so on the page</td></tr>
+    </table>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">The whole system at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-ai-productivity-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span>Neighbours on the shelf: <a href="https://phoebefu6.github.io/learn-ai-office-with-phoebe/">AI Office ↗</a> &nbsp;·&nbsp; <a href="https://phoebefu6.github.io/learn-pkm-with-phoebe/">PKM ↗</a> &nbsp;·&nbsp; <a href="https://phoebefu6.github.io/learn-automation-with-phoebe/">Automation ↗</a></span>
+  </footer>
+
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+ "title": "AI\nProductivity",
+ "centerColor": "#4A2A5E",
+ "sessions": [
+  {
+   "label": "Where your week\nactually goes",
+   "href": "courses/01-where-your-week-goes.html",
+   "color": "#34D399",
+   "concepts": [
+    {
+     "label": "28 percent, in full",
+     "href": "courses/01-where-your-week-goes.html"
+    },
+    {
+     "label": "Log, do not recall",
+     "href": "courses/01-where-your-week-goes.html"
+    },
+    {
+     "label": "Daily, rule, reversible",
+     "href": "courses/01-where-your-week-goes.html"
+    }
+   ]
+  },
+  {
+   "label": "Rules against\na judge",
+   "href": "courses/02-rules-against-a-judge.html",
+   "color": "#FBBF24",
+   "concepts": [
+    {
+     "label": "Triage has a base rate",
+     "href": "courses/02-rules-against-a-judge.html"
+    },
+    {
+     "label": "Labels from behaviour",
+     "href": "courses/02-rules-against-a-judge.html"
+    },
+    {
+     "label": "Rules vs a model",
+     "href": "courses/02-rules-against-a-judge.html"
+    }
+   ]
+  },
+  {
+   "label": "Follow-ups that do\nnot fall through",
+   "href": "courses/03-follow-ups-that-hold.html",
+   "color": "#FBBF24",
+   "concepts": [
+    {
+     "label": "Requests and commitments",
+     "href": "courses/03-follow-ups-that-hold.html"
+    },
+    {
+     "label": "I owe, waiting for",
+     "href": "courses/03-follow-ups-that-hold.html"
+    },
+    {
+     "label": "Why the list helps",
+     "href": "courses/03-follow-ups-that-hold.html"
+    }
+   ]
+  },
+  {
+   "label": "The triage\nbench",
+   "href": "courses/04-the-triage-bench.html",
+   "color": "#F87171",
+   "concepts": [
+    {
+     "label": "Flag all = base rate",
+     "href": "courses/04-the-triage-bench.html"
+    },
+    {
+     "label": "Envelope beats words",
+     "href": "courses/04-the-triage-bench.html"
+    },
+    {
+     "label": "The break test",
+     "href": "courses/04-the-triage-bench.html"
+    }
+   ]
+  },
+  {
+   "label": "Read, draft,\nsend",
+   "href": "courses/05-read-draft-send.html",
+   "color": "#FB923C",
+   "concepts": [
+    {
+     "label": "Scope is the permission",
+     "href": "courses/05-read-draft-send.html"
+    },
+    {
+     "label": "Confirm before it acts",
+     "href": "courses/05-read-draft-send.html"
+    },
+    {
+     "label": "Keep the irreversible",
+     "href": "courses/05-read-draft-send.html"
+    }
+   ]
+  },
+  {
+   "label": "The personal\nops review",
+   "href": "courses/06-the-personal-ops-review.html",
+   "color": "#FB923C",
+   "concepts": [
+    {
+     "label": "The weekly sweep",
+     "href": "courses/06-the-personal-ops-review.html"
+    },
+    {
+     "label": "Review what agents did",
+     "href": "courses/06-the-personal-ops-review.html"
+    },
+    {
+     "label": "Re-score on fresh labels",
+     "href": "courses/06-the-personal-ops-review.html"
+    }
+   ]
+  }
+ ]
+};
+</script>
+<script src="assets/mindmap.js?v=1"></script>
+<script src="assets/app.js?v=2"></script>
+</body>
+</html>

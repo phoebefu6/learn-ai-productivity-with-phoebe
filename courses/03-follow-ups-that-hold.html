@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 3 of 6. The unit of a follow-up is a promise. Requests and commitments in real email, where careful annotators still disagree, an open-loops list of what you owe and what you are waiting for, the argument over why writing it down helps, and a build-along that pulls commitments out of ten of your own sent messages.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Follow-ups that do not fall through - learn ai productivity with phoebe">
+<meta property="og:description" content="Session 3 of 6. Three annotators on 664 Enron emails agreed at kappa 0.681 on what counts as a request. Let the assistant over-extract, then you do the precision pass.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/courses/03-follow-ups-that-hold.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Follow-ups that do not fall through - learn ai productivity with phoebe">
+<meta name="twitter:description" content="Session 3 of 6. What I owe, what I am waiting for, extracted from your own sent mail and checked sentence by sentence.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 3 · Follow-ups that do not fall through - learn ai productivity with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=2">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-productivity-with-phoebe</a> / Session 3 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI Productivity with Phoebe · Session 3 of 6</div>
+    <h1>Follow-ups that do not <span class="accent">fall through</span></h1>
+    <p class="sub">Triage decides what you look at. It does not remember what you promised. The follow-up that slips is rarely a message you never saw; it is a sentence you wrote yourself, "I will send it Friday", sitting in your sent folder where nothing will ever surface it again. Tonight we treat the promise as the unit, build a two-column list of what you owe and what you are waiting for, look honestly at what the research does and does not say about why that list helps, and pull the commitments out of ten of your own sent messages.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Core</span>
+      <span class="chip audience">Anyone who has ever said "sorry, this slipped"</span>
+      <span class="chip audience">Bring your sent folder and any AI assistant</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Recap</span>
+      <span class="a2" style="flex:4">3-18 · Promises, the list, and the argument</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: ten sent messages</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we left off</h2>
+    </div>
+    <p class="lede">Session 2 set rules you can read against a model that judges, and put a base rate under both, so that a flag became a bet you can score. That handles the arrivals. Tonight is the other half of the inbox: the loops that stay open after a message has been read. Somebody asked you for something, you said yes, you asked somebody else and they went quiet. None of those show up as unread. All of them show up later as "sorry, this slipped".</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = do it on your own week</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A two-column open-loops list built from your own sent mail, every line tied to the exact sentence that created it, a person and a date; an extraction prompt that over-extracts on purpose and refuses to invent; and an honest account of why the list works, which is not the reason usually given.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers requests and commitments</span>
+      <h2>The unit of a follow-up is a promise</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A follow-up is not a message. It is one sentence inside a message: a request ("could you send the numbers by Thursday?") or a commitment ("I will send the draft Friday"). Finding those sentences sounds trivial until you ask three careful people to do it on the same pile of email and watch them disagree.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 432" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One sent email drawn in four zones: greeting, new text, a quoted earlier reply, and a signature. Inside the new text two sentences are picked out: a request, could you send the Q3 numbers by Thursday, and a commitment, I will send the draft contract Friday. Arrows carry them to an open-loops list as a waiting-for line and an I-owe line. The quoted zone is greyed because a request there was usually aimed at someone else. Notes: three annotators on 664 Enron messages agreed at kappa 0.681, and request detection rose from 72.28 to 83.76 percent accuracy with zoning.">
+        <defs>
+          <filter id="p3aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="31" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p3aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p3aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p3aH { font: 800 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3aL { font: 600 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3aS { font: 400 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+          .p3aB { font: 800 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #6B3A00; }
+          .p3aV { font: 800 18px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #4A2A5E; }
+          .p3aA { font: 700 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #8957A2; }
+          .p3aN { font: 400 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p3aH" x="30" y="26">ONE EMAIL, FOUR ZONES, TWO PROMISES</text>
+
+        <g filter="url(#p3aSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the email -->
+          <rect x="40" y="44" width="400" height="328" rx="10" fill="#FFFFFF" transform="rotate(-0.4 240 208)"/>
+          <rect x="56" y="78" width="368" height="30" rx="4" fill="#F6F0FA"/>
+          <rect x="56" y="118" width="368" height="120" rx="6" fill="#FCF1E3" stroke="#9C5600"/>
+          <rect x="70" y="146" width="340" height="36" rx="4" fill="#FFFFFF" transform="rotate(-0.8 240 164)"/>
+          <rect x="70" y="192" width="340" height="36" rx="4" fill="#FFFFFF" transform="rotate(0.6 240 210)"/>
+          <rect x="56" y="248" width="368" height="72" rx="4" fill="#E9E1F0"/>
+          <rect x="56" y="330" width="368" height="32" rx="4" fill="#FFFFFF"/>
+          <!-- the list -->
+          <rect x="540" y="118" width="300" height="146" rx="10" fill="#FFFFFF" transform="rotate(0.5 690 191)"/>
+          <rect x="554" y="152" width="272" height="44" rx="4" fill="#F6F0FA"/>
+          <rect x="554" y="208" width="272" height="44" rx="4" fill="#F6F0FA"/>
+          <!-- arrows from the sentences to the list -->
+          <path d="M414 164 L548 172" marker-end="url(#p3aAr)"/>
+          <path d="M414 212 L548 228" marker-end="url(#p3aAr)"/>
+          <!-- doodle anchor: an envelope -->
+          <rect x="784" y="44" width="48" height="32" rx="3" fill="#FFFFFF" transform="rotate(3 808 60)"/>
+          <path d="M786 47 L808 63 L830 47"/>
+        </g>
+
+        <text class="p3aS" x="56" y="66">From: you   To: Sam   Re: contract</text>
+        <text class="p3aA" x="68" y="97">greeting</text>
+        <text class="p3aS" x="160" y="97">Hi Sam,</text>
+        <text class="p3aA" x="68" y="136">new text</text>
+        <text class="p3aB" x="82" y="161">REQUEST</text>
+        <text class="p3aS" x="82" y="176">Could you send the Q3 numbers by Thursday?</text>
+        <text class="p3aB" x="82" y="207">COMMITMENT</text>
+        <text class="p3aS" x="82" y="222">I will send the draft contract Friday.</text>
+        <text class="p3aA" x="68" y="266">quoted earlier reply</text>
+        <text class="p3aS" x="68" y="284">&gt; On Mon, Lee wrote:</text>
+        <text class="p3aS" x="68" y="302">&gt; Can you book the room for the 12th?</text>
+        <text class="p3aA" x="68" y="350">signature</text>
+        <text class="p3aS" x="160" y="350">name, title, phone</text>
+
+        <text class="p3aH" x="556" y="140">OPEN-LOOPS LIST</text>
+        <text class="p3aL" x="566" y="170">Waiting for</text>
+        <text class="p3aS" x="566" y="186">Sam: Q3 numbers, due Thu</text>
+        <text class="p3aL" x="566" y="226">I owe</text>
+        <text class="p3aS" x="566" y="242">Sam: draft contract, due Fri</text>
+
+        <text class="p3aS" x="540" y="290">Quoted zone greyed: a request there was</text>
+        <text class="p3aS" x="540" y="306">usually aimed at someone else, not you.</text>
+        <text class="p3aV" x="540" y="340">kappa 0.681</text>
+        <text class="p3aS" x="540" y="358">three annotators, 664 Enron messages</text>
+
+        <text class="p3aN" x="30" y="398">Lampert, Dale, Paris (2010): with zoning, request detection rose from 72.28 to 83.76 percent accuracy.</text>
+        <text class="p3aN" x="30" y="418">Zoning tells an extractor where to look. It cannot tell it whether you will act.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber zone is the only place your own promises live; the grey quoted zone is where extractors find requests that were never yours</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Requests and commitments, and why careful humans disagree<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>A request</strong> asks someone to do something: "Could you send the Q3 numbers by Thursday?" <strong>A commitment</strong> promises that you will: "I will send the draft contract Friday." Every follow-up you will ever chase is one of those two sentences, written by you or to you.</p>
+        <p>Lampert, Dale and Paris (NAACL 2010) drew 664 messages at random from the Enron corpus and had three annotators mark each one for whether it contained a request for action. Overall agreement was kappa 0.681: well above chance, and well short of perfect. Kappa corrects raw agreement for the agreement you would get by guessing, so 0.681 means trained readers, working from a written definition, still split on a real share of messages. The authors then kept only the 505 messages all three agreed on, and 52.08 percent of those contained a request.</p>
+        <p>Two lessons follow. First, <strong>"contains a request" is not "you will act on it"</strong>. About half of the agreed messages held a request, and that still does not make every ask a loop you own; plenty are aimed at a list, a team, or someone else in the thread. Second, if careful humans disagree on the edges, any extraction, by you or by a model, needs a review pass. The disagreement is not a defect of the tool; it is a property of the sentences.</p>
+        <p>The study's own error analysis says where the hard cases are: about 20 percent of the classifier's errors were implicit requests ("it would be good to have the figures before the board meets"), and another 10 percent came from marketing or spam with request-like directives ("Click here to renew").</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why zoning matters: the quoted reply problem<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>An email is not one block of text. It has zones: a greeting, the new text the sender actually wrote, a quoted earlier reply (often several, nested), a signature, sometimes a legal disclaimer. Lampert and colleagues split messages into zones first and only then looked for requests. Message-level accuracy went from 72.28 percent without zoning to 83.76 percent with it, a relative increase of 15.9 percent and a 41 percent reduction in errors.</p>
+        <p>The reason is in the figure above. A long thread carries every earlier request in its quoted tail. "Can you book the room for the 12th?" was Lee asking someone, possibly you, on Monday, and it may already be done. An extractor that reads the whole message will happily list it again as a fresh request. When you ask an assistant to pull follow-ups out of mail, tell it to read only the new text, and when you check its output, the first thing to look for is a line whose source sentence starts with "&gt;" or sits under "On Mon, Lee wrote:".</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The Enron annotators.</strong> The 664 messages Lampert, Dale and Paris used are ordinary business mail, drawn at random from a real company's corpus. Three annotators read every one against the same written definition and still disagreed often enough to land at kappa 0.681. If trained readers working slowly do not agree on what counts as a request, a model skimming your mailbox will not either, and neither will you at 18:40 on a Friday. Build the check into the process instead of hoping the extraction is right.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the open-loops list</span>
+      <h2>Two columns: what I owe, what I am waiting for</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The list has two columns and three feeds. Your sent mail feeds both columns, because you write your own promises and your own asks. Your inbox feeds only one, and only after a decision: a request to you is mail until you accept it, and a promise once you do.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 362" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three sentence types travel into two columns. From the inbox, a request made to you passes through an accept gate before it joins I owe. From sent mail, a commitment you made goes straight to I owe, and a request you made goes to Waiting for. Each line in the columns keeps the quoted source sentence, the person and a date.">
+        <defs>
+          <filter id="p3bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="33" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p3bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p3bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p3bH { font: 800 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3bL { font: 600 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3bS { font: 400 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+          .p3bB { font: 800 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #6B3A00; }
+          .p3bN { font: 400 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p3bH" x="30" y="30">WHERE EACH LINE OF THE LIST COMES FROM</text>
+
+        <g filter="url(#p3bSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- sources -->
+          <rect x="40" y="56" width="180" height="56" rx="8" fill="#F6F0FA" transform="rotate(-0.6 130 84)"/>
+          <rect x="40" y="128" width="180" height="156" rx="8" fill="#F6F0FA" transform="rotate(0.5 130 206)"/>
+          <!-- doodle anchor: a stack of sent envelopes, side by side -->
+          <rect x="62" y="214" width="56" height="36" rx="3" fill="url(#p3bHc)" transform="rotate(-3 90 232)"/>
+          <path d="M64 217 L90 236 L116 217"/>
+          <rect x="134" y="214" width="56" height="36" rx="3" fill="url(#p3bHc)" transform="rotate(3 162 232)"/>
+          <path d="M136 217 L162 236 L188 217"/>
+          <!-- sentence cards -->
+          <rect x="280" y="56" width="260" height="56" rx="6" fill="#FFFFFF" transform="rotate(-1 410 84)"/>
+          <rect x="280" y="128" width="260" height="56" rx="6" fill="#FFFFFF" transform="rotate(1 410 156)"/>
+          <rect x="280" y="228" width="260" height="56" rx="6" fill="#FFFFFF" transform="rotate(-0.8 410 256)"/>
+          <!-- accept gate -->
+          <rect x="574" y="66" width="60" height="36" rx="18" fill="#F6F0FA"/>
+          <!-- columns -->
+          <rect x="660" y="56" width="200" height="128" rx="8" fill="#FCF1E3" stroke="#9C5600" transform="rotate(0.4 760 120)"/>
+          <rect x="660" y="212" width="200" height="88" rx="8" fill="#FFFFFF" transform="rotate(-0.4 760 256)"/>
+          <!-- feeds -->
+          <path d="M220 84 L274 84" marker-end="url(#p3bAr)"/>
+          <path d="M220 156 L274 156" marker-end="url(#p3bAr)"/>
+          <path d="M220 256 L274 256" marker-end="url(#p3bAr)"/>
+          <path d="M540 84 L568 84" marker-end="url(#p3bAr)"/>
+          <path d="M634 84 L654 84" marker-end="url(#p3bAr)"/>
+          <path d="M540 156 L654 156" marker-end="url(#p3bAr)"/>
+          <path d="M540 256 L654 256" marker-end="url(#p3bAr)"/>
+        </g>
+
+        <text class="p3bH" x="56" y="80">INBOX</text>
+        <text class="p3bS" x="56" y="98">mail sent to you</text>
+        <text class="p3bH" x="56" y="152">SENT</text>
+        <text class="p3bS" x="56" y="170">mail you wrote: both</text>
+        <text class="p3bS" x="56" y="186">your promises and asks</text>
+
+        <text class="p3bL" x="294" y="78">request made to you</text>
+        <text class="p3bS" x="294" y="96">"Can you review the deck?"</text>
+        <text class="p3bL" x="294" y="150">commitment you made</text>
+        <text class="p3bS" x="294" y="168">"I will send it Friday."</text>
+        <text class="p3bL" x="294" y="250">request you made</text>
+        <text class="p3bS" x="294" y="268">"Can you send the invoice?"</text>
+
+        <text class="p3bB" x="604" y="88" text-anchor="middle">accept?</text>
+        <text class="p3bS" x="604" y="122" text-anchor="middle">only if yes</text>
+
+        <text class="p3bH" x="676" y="78">I OWE</text>
+        <text class="p3bS" x="676" y="98">"Can you review the deck?"</text>
+        <text class="p3bS" x="676" y="114">Raj, accepted Tue, due Thu</text>
+        <text class="p3bS" x="676" y="146">"I will send it Friday."</text>
+        <text class="p3bS" x="676" y="166">Ana, due Fri</text>
+        <text class="p3bH" x="676" y="234">WAITING FOR</text>
+        <text class="p3bS" x="676" y="256">"Can you send the invoice?"</text>
+        <text class="p3bS" x="676" y="274">Lee, asked Mon, chase Thu</text>
+
+        <text class="p3bN" x="30" y="326">Every line keeps the exact source sentence, a person and a date. No sentence, no line.</text>
+        <text class="p3bN" x="30" y="346">A request to you joins "I owe" only once you accept it; until then it is mail, not a promise.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - your sent folder feeds both columns; the inbox feeds "I owe" only through the accept gate</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why the sent folder is the best source you are not using<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Most follow-up tools start from the inbox, because that is where the unread count lives. But the promises you are judged on are the ones you made, and those are in your sent mail: "I will send it Friday", "let me check with finance and come back to you", "will do". The inbox is full of requests that may or may not be yours; the sent folder is a list of things you actually said yes to, and a list of things you actually asked for.</p>
+        <p>Each line on the list keeps three things: <strong>the exact sentence</strong> that created it (so you can check it later without reopening the thread), <strong>the person</strong> on the other side, and <strong>a date</strong>: the date you promised, or for a waiting-for line, the date you will chase. A line without its sentence is a guess about what you said; a line without a date never comes up.</p>
+        <p>This is not a new idea. The GTD Weekly Review checklist (David Allen Company) has a line for exactly the second column: "Review Waiting For List: Record appropriate actions for any needed follow-up. Check off received ones." That is a practitioner method, written down from practice, not a study; it tells you what experienced people do, not what was measured to work.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Extraction is a recall job, so over-extract and you prune<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Session 2 gave you precision and recall. Use them here. A <strong>missed</strong> commitment costs you a broken promise, found out by the other person. A <strong>spurious</strong> candidate costs you two seconds to strike out. Those costs are nowhere near equal, so tune the assistant for recall: ask it to list anything that might be a promise or an ask, including the implied ones, and do the precision pass yourself.</p>
+        <p>The prompt below carries an honesty clause. The assistant must quote the sentence, not paraphrase it, because a paraphrase can quietly turn "I will try to send it Friday" into "send it Friday". It must mark implied commitments "implicit?" rather than present them as firm, because those are the 20 percent that tripped up the Lampert classifier. And it must say "none found" rather than invent one, because an assistant asked for a list will otherwise produce a list.</p>
+        <div class="prompt-box good"><span class="label">★ The extraction prompt, with the honesty clause</span>Below are messages I sent. For each one, read ONLY the new text I wrote.
+Ignore quoted earlier replies (lines starting with "&gt;" or under "On ... wrote:"), signatures and disclaimers.
+
+List every sentence that is either:
+- a COMMITMENT: something I said I would do, or
+- a REQUEST: something I asked the recipient to do.
+
+For each, give: type, the EXACT sentence quoted word for word, the person, and any date or deadline stated.
+Rules:
+- Quote; never paraphrase or tidy the sentence.
+- If a commitment or request is implied rather than stated ("will look into it", "would be good to have"), include it and mark it "implicit?".
+- If a message has none, write "none found" for that message. Do not invent one.
+- When unsure, include it. I will prune.
+
+[paste ten sent messages, each with its date and recipient]</div>
+        <p>Once the list exists, turning its dates into reminders, or a "Waiting for" line into an automatic nudge, is workflow plumbing; that is <a href="https://phoebefu6.github.io/learn-automation-with-phoebe/">Life and Work Automation ↗</a>.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The contract that was "in the email" (constructed).</strong> An ops lead replies to a supplier at the bottom of a long thread: "Thanks, I will get the signed copy back to you once legal has looked." No date, no task created, and the message is now three replies deep under newer ones. Three weeks later the supplier chases, politely, and the lead has no memory of promising anything. A sweep of the sent folder would have caught the sentence, marked it "implicit?" because no date was stated, and put it on the list with a question to answer: by when?</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers why writing it down helps, and the disagreement</span>
+      <h2>Why the list helps, and what is still argued</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">You will have heard that unfinished tasks nag at you until you write them down, and that writing them down makes the nagging stop. Two serious pieces of research bear on that claim, and they point in different directions because they measured different things.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 374" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels. Left, Masicampo and Baumeister 2011: unfinished goals produced intrusive thoughts, more accessible goal words and poorer anagram performance; letting participants write a specific plan eliminated those effects. Right, Ghibellini and Meier 2025 meta-analysis: interrupted tasks were recalled at a weighted ratio of 0.99 to completed tasks across 38 publications, so no memory advantage; but the tendency to resume interrupted tasks is robust. The two studies measured different outcomes.">
+        <defs>
+          <filter id="p3cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="35" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p3cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p3cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p3cH { font: 800 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3cL { font: 600 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3cS { font: 400 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+          .p3cB { font: 800 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #6B3A00; }
+          .p3cV { font: 800 18px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #4A2A5E; }
+          .p3cA { font: 700 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #8957A2; }
+          .p3cN { font: 400 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p3cH" x="30" y="26">TWO STUDIES, TWO DIFFERENT THINGS MEASURED</text>
+
+        <g filter="url(#p3cSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- panel A -->
+          <rect x="30" y="44" width="400" height="270" rx="10" fill="#FFFFFF" transform="rotate(-0.4 230 179)"/>
+          <rect x="46" y="100" width="118" height="44" rx="4" fill="#F6F0FA" transform="rotate(-2 105 122)"/>
+          <rect x="176" y="100" width="118" height="44" rx="4" fill="#F6F0FA" transform="rotate(1.5 235 122)"/>
+          <rect x="306" y="100" width="110" height="44" rx="4" fill="#F6F0FA" transform="rotate(-1 361 122)"/>
+          <path d="M230 150 L230 172" marker-end="url(#p3cAr)"/>
+          <rect x="110" y="178" width="240" height="40" rx="6" fill="#F6F0FA"/>
+          <path d="M230 222 L230 244" marker-end="url(#p3cAr)"/>
+          <rect x="110" y="250" width="240" height="40" rx="6" fill="#FFFFFF"/>
+          <!-- panel B -->
+          <rect x="450" y="44" width="400" height="270" rx="10" fill="#FFFFFF" transform="rotate(0.4 650 179)"/>
+          <rect x="466" y="120" width="297" height="22" rx="3" fill="url(#p3cHc)"/>
+          <rect x="466" y="166" width="300" height="22" rx="3" fill="#F6F0FA"/>
+          <rect x="466" y="226" width="368" height="64" rx="8" fill="#FCF1E3" stroke="#9C5600"/>
+          <!-- doodle anchor: a return loop -->
+          <path d="M806 268 C 792 266, 790 246, 806 244 C 818 243, 824 252, 820 262" marker-end="url(#p3cAr)"/>
+        </g>
+
+        <text class="p3cH" x="46" y="68">MASICAMPO AND BAUMEISTER (2011)</text>
+        <text class="p3cA" x="46" y="86">outcome: intrusion, accessibility, interference</text>
+        <text class="p3cS" x="105" y="119" text-anchor="middle">intrusive</text>
+        <text class="p3cS" x="105" y="134" text-anchor="middle">thoughts</text>
+        <text class="p3cS" x="235" y="119" text-anchor="middle">goal words</text>
+        <text class="p3cS" x="235" y="134" text-anchor="middle">more accessible</text>
+        <text class="p3cS" x="361" y="119" text-anchor="middle">poorer</text>
+        <text class="p3cS" x="361" y="134" text-anchor="middle">anagrams</text>
+        <text class="p3cL" x="230" y="203" text-anchor="middle">write a specific plan</text>
+        <text class="p3cL" x="230" y="275" text-anchor="middle">effects eliminated</text>
+
+        <text class="p3cH" x="466" y="68">GHIBELLINI AND MEIER (2025 META-ANALYSIS)</text>
+        <text class="p3cA" x="466" y="86">outcome: recall, and resumption</text>
+        <text class="p3cS" x="466" y="114">interrupted tasks, recalled</text>
+        <text class="p3cS" x="466" y="160">completed tasks, recalled</text>
+        <text class="p3cV" x="776" y="138">0.99</text>
+        <text class="p3cS" x="776" y="182">baseline</text>
+        <text class="p3cA" x="466" y="210">weighted recall ratio across 38 publications</text>
+        <text class="p3cB" x="482" y="252">RESUMPTION TENDENCY: ROBUST</text>
+        <text class="p3cS" x="482" y="272">people go back to interrupted tasks</text>
+
+        <text class="p3cN" x="30" y="340">One study measured intrusion and accessibility; the other measured recall. Both can hold at once.</text>
+        <text class="p3cN" x="30" y="360">Neither settles "your brain nags you until you write it down". The list rests on firmer ground.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the two panels do not contradict each other so much as measure different outcomes; the amber box is what the practical case actually rests on</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What each study found, in its own words<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Masicampo and Baumeister (2011, JPSP)</strong> gave people unfinished goals and measured the cost. Unfinished goals produced intrusive thoughts during an unrelated task, high accessibility of goal-related words, and poorer anagram performance. Then the key manipulation, in the abstract's words: "Allowing participants to formulate specific plans for their unfulfilled goals eliminated the various activation and interference effects." Not finishing the goal: planning it.</p>
+        <p><strong>Ghibellini and Meier (2025)</strong> pooled the research on two old claims. The Zeigarnik effect says interrupted tasks are remembered better than completed ones. The Ovsiankina effect says people tend to go back to interrupted tasks. Their summary: "We found no memory advantage for unfinished tasks but found a general tendency to resume tasks." The weighted recall ratio, interrupted to completed, was 0.99 across 38 publications. They conclude the Zeigarnik effect "lacks universal validity", while the Ovsiankina resumption tendency is robust.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Teaching the disagreement, not resolving it<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>It is tempting to stitch these together into one story: unfinished tasks haunt memory, a plan lays them to rest. The 2025 meta-analysis takes out the memory half of that story; the 2011 study never measured recall in the first place. They measured <strong>different outcomes</strong>: one asked whether unfinished goals intrude on attention and stay mentally active, the other asked whether unfinished tasks are better remembered. A goal can stay active without being better recalled. Whether the intrusion and accessibility effects of 2011 hold up across many labs the way recall was tested in 2025 is not something either paper answers, so it is left open here.</p>
+        <p>The practical case for the list does not need that question settled. It rests on two things that do not depend on it. <strong>Memory is not a reliable store for promises</strong>: no study above shows that unfinished tasks are reliably remembered, and the 0.99 ratio says they are not remembered better. <strong>People tend to resume interrupted tasks</strong>, which the meta-analysis finds robust: a list with a sentence and a date gives that tendency something to resume from. If writing a specific plan also quiets the background noise, as the 2011 study found in its setting, that is a bonus, not the foundation.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The colleague who says "I never forget a promise" (constructed).</strong> A team lead keeps no list and says the open loops "nag at me until they are done". Some do. The ones that did not nag are, by definition, the ones nobody hears about until the other side chases. A feeling of being nagged is evidence that some loops are active, not that all of them are. The list is not a cure for a nagging brain; it is a record that does not depend on which loops happened to nag this week.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Ten sent messages, one honest list</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">You build the list from your own sent mail, with an assistant doing the reading and you doing the deciding. The pipeline is extract, check, add what was missed, date. Expect the assistant to suggest some lines you will reject and to miss at least one you will find yourself; that is the design working, not failing.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A constructed example of the extract-and-check pipeline. Ten sent messages go to the assistant, which over-extracts seven candidates. You check each against its source sentence: five are kept and two rejected as not commitments. Rereading the messages by hand finds one more the assistant missed. Six lines go on the list. The counts are constructed and your numbers will differ.">
+        <defs>
+          <filter id="p3dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="37" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p3dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p3dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p3dH { font: 800 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3dL { font: 600 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #241A2E; }
+          .p3dS { font: 400 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+          .p3dB { font: 800 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #6B3A00; }
+          .p3dV { font: 800 18px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #4A2A5E; }
+          .p3dA { font: 700 11px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #8957A2; }
+          .p3dN { font: 400 12px Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p3dH" x="30" y="24">CONSTRUCTED: TEN SENT MESSAGES THROUGH EXTRACT AND CHECK</text>
+
+        <g filter="url(#p3dSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="80" width="120" height="60" rx="6" fill="url(#p3dHc)" transform="rotate(-1.5 90 110)"/>
+          <rect x="200" y="80" width="150" height="60" rx="8" fill="#F6F0FA" transform="rotate(0.6 275 110)"/>
+          <rect x="400" y="80" width="120" height="60" rx="8" fill="#FFFFFF" transform="rotate(-0.8 460 110)"/>
+          <rect x="570" y="80" width="150" height="60" rx="8" fill="#F6F0FA" transform="rotate(0.7 645 110)"/>
+          <rect x="760" y="36" width="100" height="40" rx="6" fill="#FFFFFF" transform="rotate(2 810 56)"/>
+          <rect x="760" y="96" width="100" height="40" rx="6" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-1.5 810 116)"/>
+          <rect x="760" y="176" width="100" height="60" rx="8" fill="#F6F0FA" transform="rotate(1 810 206)"/>
+          <rect x="570" y="200" width="150" height="44" rx="8" fill="#FFFFFF" transform="rotate(-1 645 222)"/>
+          <path d="M154 110 L196 110" marker-end="url(#p3dAr)"/>
+          <path d="M354 110 L396 110" marker-end="url(#p3dAr)"/>
+          <path d="M524 110 L566 110" marker-end="url(#p3dAr)"/>
+          <path d="M720 96 L754 60" marker-end="url(#p3dAr)"/>
+          <path d="M720 116 L754 116" marker-end="url(#p3dAr)"/>
+          <path d="M810 140 L810 170" marker-end="url(#p3dAr)"/>
+          <path d="M90 196 L90 222 L564 222" marker-end="url(#p3dAr)"/>
+          <path d="M720 222 L754 212" marker-end="url(#p3dAr)"/>
+          <!-- doodle anchor: a magnifier -->
+          <circle cx="538" cy="176" r="11" fill="#FFFFFF"/>
+          <path d="M546 184 L556 194"/>
+        </g>
+
+        <text class="p3dV" x="90" y="168" text-anchor="middle">10</text>
+        <text class="p3dS" x="90" y="186" text-anchor="middle">sent messages</text>
+        <text class="p3dL" x="275" y="106" text-anchor="middle">assistant extracts</text>
+        <text class="p3dS" x="275" y="124" text-anchor="middle">recall first</text>
+        <text class="p3dV" x="460" y="110" text-anchor="middle">7</text>
+        <text class="p3dS" x="460" y="128" text-anchor="middle">candidates</text>
+        <text class="p3dL" x="645" y="106" text-anchor="middle">you check each</text>
+        <text class="p3dS" x="645" y="124" text-anchor="middle">against its sentence</text>
+        <text class="p3dL" x="810" y="60" text-anchor="middle">2 rejected</text>
+        <text class="p3dB" x="810" y="120" text-anchor="middle">5 kept</text>
+        <text class="p3dV" x="810" y="204" text-anchor="middle">6</text>
+        <text class="p3dS" x="810" y="224" text-anchor="middle">on the list</text>
+        <text class="p3dA" x="300" y="214" text-anchor="middle">you reread the ten by hand</text>
+        <text class="p3dL" x="645" y="226" text-anchor="middle">1 found by hand</text>
+
+        <text class="p3dN" x="30" y="274">Constructed example. Your numbers will differ; expect some rejects and at least one miss.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - constructed counts; the amber box is what survives your check, and the bottom route is the miss only a human reread finds</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Pick ten sent messages from the last fortnight.</strong> Not your ten most important: the ten most recent that went to a person rather than a list. Copy each with its date and recipient. Strip anything you would not paste into the assistant your organisation has approved.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · the sample, written down</span>Sample: last 10 sent messages to a person, newest first
+Window: 21 Sep to 2 Oct
+Skipped: 2 calendar replies, 1 message with a payroll attachment (not pasted)
+Format per message: date | to | new text only</div>
+      </div>
+      <div class="step">
+        <p><strong>Run the extraction prompt from Part 2.</strong> Paste all ten in one go. You want every candidate, including the implied ones; resist the urge to tell it to "only list the important ones".</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · run it</span>[the extraction prompt from Part 2, unchanged]
+
+[message 1] 2 Oct | to Ana | Thanks, I will send the revised plan Friday.
+[message 2] 28 Sep | to Lee | Can you send the signed invoice when you get a minute?
+...
+[message 10] 2 Oct | to Raj | Will look into it and come back to you.</div>
+      </div>
+      <div class="step">
+        <p><strong>Check each candidate against its sentence.</strong> Open the quoted sentence in the original message. Keep it if you really promised or really asked. Reject it if it is pleasantry ("let me know if you have questions"), already done, or someone else's ask in a quoted reply. Every "implicit?" line gets a decision: firm it up or strike it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · the check, one line per candidate</span>KEEP    "I will send the revised plan Friday."           commitment, Ana
+KEEP    "Can you send the signed invoice ..."            request, Lee
+REJECT  "Let me know if you have questions."             pleasantry, not a promise
+KEEP    "Will look into it and come back to you." implicit? -&gt; yes, I owe Raj an answer
+MISSED  (msg 6) "I'll loop in finance next week."           found on reread, commitment</div>
+      </div>
+      <div class="step">
+        <p><strong>Add a due date and the person to every kept line.</strong> Where the sentence states a date, use it. Where it does not ("come back to you"), set one now and write it down; a promise without a date is the kind that slips. Then reread the ten messages yourself, quickly, for anything the assistant missed.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the "I owe" column</span>I OWE
+- Ana  | "I will send the revised plan Friday."        | due Fri 9 Oct
+- Raj  | "Will look into it and come back to you."     | due Tue 6 Oct (my date)
+- Finance via Sam | "I'll loop in finance next week."   | due Fri 9 Oct</div>
+      </div>
+      <div class="step">
+        <p><strong>Build the "Waiting for" column from your own requests.</strong> Every request you made is a line with a chase date: the date you asked for, or a few working days after you asked if you gave none.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the "Waiting for" column</span>WAITING FOR
+- Lee  | "Can you send the signed invoice ...?" | asked Mon 28 Sep | chase Thu 1 Oct (overdue)
+- Priya | "Could you confirm the venue by the 8th?" | asked Wed 30 Sep | chase Thu 8 Oct</div>
+      </div>
+      <div class="step">
+        <p><strong>Set one review date.</strong> Pick a time this week, in the calendar, to go down both columns: tick what landed, chase what is late, renegotiate what you cannot meet. One date now; session 6 turns it into a weekly habit with its own checklist.</p>
+        <div class="prompt-box good"><span class="label">★ Step 6 · the review, booked</span>Calendar: Fri 9 Oct, 16:30, 20 min, "Open loops"
+Agenda: tick received, chase overdue Waiting For, renegotiate any I owe I cannot meet,
+        add this week's sent mail (another ten messages)</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Count your own pipeline.</strong> Write down how many candidates the assistant gave, how many you kept, how many you rejected, and how many you found by hand. Those four numbers are your own extraction precision and recall, on your own mail, and they are what you bring to session 4.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 4</h2>
+      <span class="tag exercise">20 min, once</span>
+    </div>
+    <ol>
+      <li><strong>Finish the list from ten sent messages.</strong> Both columns, every line with its quoted sentence, a person and a date.</li>
+      <li><strong>Record your four pipeline counts:</strong> candidates, kept, rejected, found by hand. Work out what share of your final list the assistant found on its own.</li>
+      <li><strong>Hold your review date.</strong> Tick, chase, renegotiate. Note one line that would have slipped without the list, if there is one, and be honest if there is not.</li>
+      <li><strong>Bring your list and your three rules from session 2 to session 4's bench night.</strong> The rules get scored on 390 real messages; the list is what tells you which misses would have hurt.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 3 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Three annotators marking Enron emails for requests agreed at kappa 0.681. What does that mean for any extraction of requests or commitments from your mail?</p>
+      <button class="qopt" type="button">A · Nothing; kappa only applies to machine classifiers</button>
+      <button class="qopt" type="button">B · That 68.1 percent of emails contain a request</button>
+      <button class="qopt" type="button">C · That even careful humans disagree on what counts, so any extraction, yours or a model's, needs a review pass</button>
+      <button class="qopt" type="button">D · That an AI model will agree with you 68.1 percent of the time</button>
+      <p class="qwhy">Kappa measures agreement between annotators beyond what chance would give. 0.681 is solid but far from perfect: trained readers with a written definition still split on a real share of messages. The share of unanimously agreed messages containing a request was a different number, 52.08 percent.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · How do the 2011 study by Masicampo and Baumeister and the 2025 meta-analysis by Ghibellini and Meier relate?</p>
+      <button class="qopt" type="button">A · They measured different outcomes: 2011 found unfinished goals intrude and stay accessible until a specific plan is made; 2025 found no recall advantage for unfinished tasks (ratio 0.99) but a robust tendency to resume them</button>
+      <button class="qopt" type="button">B · The 2025 meta-analysis proved the 2011 study wrong</button>
+      <button class="qopt" type="button">C · Both found that unfinished tasks are remembered much better than finished ones</button>
+      <button class="qopt" type="button">D · Both studies were about email follow-ups specifically</button>
+      <p class="qwhy">One measured intrusion, accessibility and interference; the other pooled recall studies. They do not cancel each other out, and neither settles "your brain nags you". The practical case for the list rests on not trusting memory and on the resumption tendency.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Why ask the assistant to over-extract and then prune the list yourself?</p>
+      <button class="qopt" type="button">A · Because assistants are always more accurate than people at finding requests</button>
+      <button class="qopt" type="button">B · Because a longer list looks more thorough at the weekly review</button>
+      <button class="qopt" type="button">C · Because pruning trains the assistant for next time</button>
+      <button class="qopt" type="button">D · Because a missed commitment costs a broken promise while a spurious candidate costs seconds to strike out, so you tune for recall and do the precision pass by hand</button>
+      <p class="qwhy">The two errors do not cost the same. Extraction is a recall job; the human check is the precision pass. The honesty clause (quote, mark "implicit?", say "none found") keeps the over-extraction checkable.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Lampert, A., Dale, R., Paris, C. (2010). Detecting Emails Containing Requests for Action. NAACL HLT 2010, 984-992.</span><span class="note">Read at source: 664 Enron messages, three annotators, kappa 0.681; 505 unanimous, 52.08 percent with a request; 72.28 to 83.76 percent accuracy with zoning; about 20 percent of errors implicit requests, 10 percent marketing or spam</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">David Allen Company. GTD Weekly Review checklist (1990-2006).</span><span class="note">Read at source and quoted for the Waiting For line; a practitioner method, not evidence that it works</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Masicampo, E. J., Baumeister, R. F. (2011). Consider it done! JPSP 101(4), 667-683.</span><span class="note">Abstract read at source: intrusive thoughts, goal-word accessibility, poorer anagram performance, eliminated by formulating specific plans</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Ghibellini, R., Meier, B. (2025). Interruption, recall and resumption: a meta-analysis of the Zeigarnik and Ovsiankina effects. Humanities and Social Sciences Communications 12, 962.</span><span class="note">Read at source (open access): no memory advantage for unfinished tasks, weighted recall ratio 0.99 across 38 publications, resumption tendency robust</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The build-along pipeline counts</span><span class="note">Constructed for teaching (10 messages, 7 candidates, 5 kept, 2 rejected, 1 found by hand); your numbers will differ</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The unit is a promise</b><span>A request or a commitment: one sentence, not one message.</span></div>
+      <div class="cheat-item"><b>Humans disagree</b><span>Kappa 0.681 on Enron mail. Any extraction needs a review pass.</span></div>
+      <div class="cheat-item"><b>Read the new text only</b><span>Quoted replies hold old asks aimed at others. Zoning took accuracy from 72.28 to 83.76 percent.</span></div>
+      <div class="cheat-item"><b>Two columns, three feeds</b><span>Sent mail feeds I owe and Waiting for; the inbox feeds I owe only once you accept.</span></div>
+      <div class="cheat-item"><b>Over-extract, then prune</b><span>Quote the sentence, mark "implicit?", say "none found". Every line gets a person and a date.</span></div>
+      <div class="cheat-item"><b>Why the list works</b><span>Not a settled memory effect (ratio 0.99): memory is unreliable and people resume tasks.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Session 4 is bench night. The three rules you wrote in session 2 meet 390 real messages from three Enron mailboxes, labelled by what each owner actually did, and get scored live: flagged share, precision and recall against a base rate of 25.9 percent. Bring the rules and tonight's list; the list is how you will know which misses would have cost you.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 3 of 6 · learn-ai-productivity-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="02-rules-against-a-judge.html">← Prev: Rules against a judge</a> &nbsp;·&nbsp; <a href="04-the-triage-bench.html">Next: The triage bench →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=2"></script>
+</body>
+</html>

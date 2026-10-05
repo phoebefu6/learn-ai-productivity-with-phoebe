@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 6 of 6. The weekly review that keeps a personal ops system honest: the GTD Weekly Review adapted for ops, with an assistant on the sweep and you on the decisions; a weekly check of each agent's log against its permission slip; a monthly re-score of your rules on fresh labels, for the reason Gmail Priority Inbox tuned a threshold per user; and a one-page personal-ops spec.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The personal ops review - learn ai productivity with phoebe">
+<meta property="og:description" content="Session 6 of 6. Get clear, get current, then decide. Read the agent log before you trust the agent, and re-score your rules on your own fresh labels every month.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/courses/06-the-personal-ops-review.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The personal ops review - learn ai productivity with phoebe">
+<meta name="twitter:description" content="Session 6 of 6. A weekly ops review, an agent log check, a monthly rule re-score, and a one-page spec.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-ai-productivity-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 6 · The personal ops review - learn ai productivity with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=2">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-ai-productivity-with-phoebe</a> / Session 6 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn AI Productivity with Phoebe · Session 6 of 6</div>
+    <h1>The personal ops <span class="accent">review</span></h1>
+    <p class="sub">Five sessions built the parts: a log of where the week goes, triage rules scored against a base rate, an open-loops list, a bench, and a permission slip for every assistant that touches your mail. Parts drift. Rules that scored well in October flag the wrong things by February, a waiting-for line quietly ages, an assistant does one thing its slip never allowed. Tonight is the half hour a week that notices, with an assistant doing the sweeping and you doing every decision, and a one-page spec that writes the whole system down.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Hands-on</span>
+      <span class="chip audience">Anyone running the parts from sessions 1 to 5</span>
+      <span class="chip audience">Bring your rules, your list and your slips</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Where we left off</span>
+      <span class="a2" style="flex:4">3-18 · The review, the agent log, the re-score</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: your one-page spec</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we left off</h2>
+    </div>
+    <p class="lede">Session 5 ended with an audit: every app that can touch your mailbox, its scope in plain words, and a one-line permission slip for each assistant you kept. A slip is a decision made once. Everything else in the system is the same: a rule chosen once, a list started once, a log run once. Tonight turns each of those one-off decisions into something that gets looked at again on a schedule, because the failure every session has warned about is the silent one, and silence is only broken by someone looking.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = do it on your own week</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A 30-minute weekly ops review with the sweep handed to an assistant and the decisions kept by you, a five-action check of each agent's log against its slip, a monthly re-score sheet for your rules, a cadence in your calendar, and a one-page spec that holds the whole system on a single sheet.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the weekly review, adapted for ops</span>
+      <h2>Get clear, get current, then decide</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">The best-known weekly review is the one in the David Allen Company's GTD Weekly Review checklist. It is a practitioner method, a checklist refined in practice, not a study, and nothing here claims evidence that it works. It earns its place because its three stages map cleanly onto the loops from session 1, and because it already separates the work of finding things from the work of deciding about them. That separation is exactly where an assistant fits. The notes half of a weekly review, your reading and your ideas, is taught in <a href="https://phoebefu6.github.io/learn-pkm-with-phoebe/courses/05-review-that-actually-happens.html">PKM, session 5 ↗</a>; here the review is about mail, commitments and agents.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The GTD Weekly Review's three stages as read at source. Get clear: collect loose papers and materials, get IN to zero, empty your head. Get current: review action lists, previous and upcoming calendar, the Waiting For list, projects, checklists. Get creative: someday or maybe, new ideas. Below, two lanes. An assistant may sweep the inbox and sent mail for open loops, list what changed since last week, and draft the waiting-for nudges without sending them. Staying yours: deciding what matters, accepting or dropping a commitment, and sending anything.">
+        <defs>
+          <filter id="p6aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="61" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p6aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p6aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p6aH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p6aL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p6aS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p6aB { font: 800 11px Inter, sans-serif; fill: #6B3A00; }
+          .p6aA { font: 700 11px Inter, sans-serif; fill: #8957A2; }
+          .p6aN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p6aH" x="30" y="26">THE GTD WEEKLY REVIEW AS READ AT SOURCE, SPLIT BETWEEN AN ASSISTANT AND YOU</text>
+
+        <g filter="url(#p6aSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="44" width="260" height="152" rx="10" fill="#F6F0FA" transform="rotate(-0.4 160 120)"/>
+          <rect x="310" y="44" width="260" height="152" rx="10" fill="#F6F0FA" transform="rotate(0.3 440 120)"/>
+          <rect x="590" y="44" width="260" height="152" rx="10" fill="#F6F0FA" transform="rotate(-0.3 720 120)"/>
+          <path d="M292 120 L306 120" marker-end="url(#p6aAr)"/>
+          <path d="M572 120 L586 120" marker-end="url(#p6aAr)"/>
+          <!-- the two lanes -->
+          <rect x="30" y="236" width="400" height="110" rx="10" fill="#FFFFFF" transform="rotate(0.3 230 291)"/>
+          <rect x="450" y="236" width="400" height="110" rx="10" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-0.3 650 291)"/>
+          <!-- which stage feeds which lane -->
+          <path d="M160 198 L160 230" marker-end="url(#p6aAr)"/>
+          <path d="M400 198 L380 230" marker-end="url(#p6aAr)"/>
+          <path d="M480 198 L500 230" marker-end="url(#p6aAr)"/>
+          <path d="M720 198 L720 230" marker-end="url(#p6aAr)"/>
+          <!-- doodle anchor: an in-tray -->
+          <path d="M786 150 L796 172 L834 172 L844 150"/>
+          <path d="M796 172 L796 180 L834 180 L834 172"/>
+          <path d="M800 140 L828 136 L832 150"/>
+        </g>
+
+        <text class="p6aH" x="46" y="70">1 · GET CLEAR</text>
+        <text class="p6aS" x="46" y="94">collect loose papers and materials</text>
+        <text class="p6aS" x="46" y="114">get "IN" to zero</text>
+        <text class="p6aS" x="46" y="134">empty your head</text>
+
+        <text class="p6aH" x="326" y="70">2 · GET CURRENT</text>
+        <text class="p6aS" x="326" y="94">review action lists</text>
+        <text class="p6aS" x="326" y="114">previous and upcoming calendar</text>
+        <text class="p6aS" x="326" y="134">the Waiting For list</text>
+        <text class="p6aS" x="326" y="154">projects, checklists</text>
+
+        <text class="p6aH" x="606" y="70">3 · GET CREATIVE</text>
+        <text class="p6aS" x="606" y="94">someday/maybe</text>
+        <text class="p6aS" x="606" y="114">new ideas</text>
+
+        <text class="p6aA" x="46" y="186">the sweep lives here</text>
+        <text class="p6aA" x="326" y="186">half sweep, half decision</text>
+
+        <text class="p6aL" x="48" y="262">AN ASSISTANT MAY</text>
+        <text class="p6aS" x="48" y="286">sweep inbox and sent mail for open loops</text>
+        <text class="p6aS" x="48" y="306">list what changed since last week</text>
+        <text class="p6aS" x="48" y="326">draft the waiting-for nudges, unsent</text>
+
+        <text class="p6aB" x="468" y="262">STAYS YOURS</text>
+        <text class="p6aS" x="468" y="286">deciding what matters this week</text>
+        <text class="p6aS" x="468" y="306">accepting or dropping a commitment</text>
+        <text class="p6aS" x="468" y="326">sending anything at all</text>
+
+        <text class="p6aN" x="30" y="370">A practitioner checklist from the David Allen Company, not a study. Stage names and steps as printed.</text>
+        <text class="p6aN" x="30" y="390">Finding is a recall job an assistant can do; every decision and every send stays on your side.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the review already separates finding from deciding, and the amber lane is everything the assistant does not get</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The ops review in 30 minutes, step by step<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The split below is a suggested one, not a measured one; your first two reviews will tell you where it runs long. The order matters more than the minutes: clear first, so you are deciding about a complete picture.</p>
+        <p><strong>0 to 5, get clear.</strong> Run your triage rules from session 2 one last time for the week and take the inbox to zero in the GTD sense: not answered, decided. Each message is either acted on now, added to a list, or archived. Pull anything written on paper or in chat into the same place.</p>
+        <p><strong>5 to 10, read the sweep.</strong> The assistant's sweep, run before you sat down, lists candidate open loops from last week's received and sent mail, each with the sentence it came from. You read it as a precision pass, exactly as in session 3: keep what is real, strike what is not, and never add a line the sweep invented.</p>
+        <p><strong>10 to 20, get current.</strong> Walk the "I owe" column, then the "Waiting for" column, then last week's calendar for promises made in meetings, then next week's calendar for anything that needs preparing. For each waiting-for line older than a week, the assistant may have a nudge drafted. You decide whether it goes, and you send it.</p>
+        <p><strong>20 to 25, the agent check.</strong> Part 2: each assistant's log against its slip, five actions each.</p>
+        <p><strong>25 to 30, get creative, then decide.</strong> Someday/maybe, new ideas, and the one decision the review exists for: which three things matter next week. That sentence is yours and does not get drafted.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the review, not the tools, is what stops leaks<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Look back at the constructed week in session 1. Triage, reply and chase all had minutes against them. Review had zero. That was a constructed example, but the shape is worth taking seriously, because it shows how a system can leak even when every part works. Rules catch the messages they were written for. Extraction catches the commitments that look like commitments. Neither can notice its own misses: a rule that stopped matching, a promise made on a call, a waiting-for line nobody re-read. Only a pass that looks at the whole list, on a schedule, can see what nothing caught.</p>
+        <p>Session 3 explained why the list itself is worth keeping: people do tend to resume interrupted tasks, and writing a plan down is a better bet than relying on memory. A list nobody reads has neither benefit. The review is what turns the list from an archive into a working tool.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>A checklist written for paper that already had a Waiting For line.</strong> The GTD Weekly Review checklist predates today's AI assistants, and its "get current" stage already names "Review Waiting For List" as its own step, separate from your action lists. The split session 3 drew between "I owe" and "Waiting for" is not new; the checklist already treats what other people owe you as a list of its own, reviewed every week. What is new is that the sweep for it can be delegated. The checking cannot.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers reviewing what agents did</span>
+      <h2>Read the log before you trust the agent</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A permission slip says what an assistant may do. A log says what it did. The weekly agent check puts the two side by side, spot-checks five actions, and ends in one of three decisions. It takes five minutes per assistant, and it is the only point in the system where a scope granted in session 5 meets evidence of how it was used.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 372" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The weekly agent check drawn as a mechanism. On the left, the assistant's permission slip from session 5: read yes, label yes, draft yes, send no. In the middle, its constructed action log for one week: Monday 12 labels applied, Tuesday 4 drafts written, Wednesday 9 labels applied, Thursday 1 message sent, Friday 3 drafts written. Both feed a spot check of five actions: picked from the log, compared with what you would have done, and checked against the slip. The check ends in one of three decisions: keep, narrow the scope, or revoke. The Thursday send is outside the slip and is drawn in red.">
+        <defs>
+          <filter id="p6bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="62" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p6bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p6bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p6bH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p6bL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p6bS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p6bB { font: 800 11px Inter, sans-serif; fill: #6B3A00; }
+          .p6bR { font: 800 11px Inter, sans-serif; fill: #991B1B; }
+          .p6bN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p6bH" x="30" y="26">THE WEEKLY AGENT CHECK: THE SLIP, THE LOG, FIVE ACTIONS, A DECISION</text>
+
+        <g filter="url(#p6bSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="30" y="48" width="180" height="128" rx="8" fill="#FFFFFF" transform="rotate(-1.5 120 112)"/>
+          <rect x="240" y="48" width="260" height="172" rx="8" fill="#F6F0FA" transform="rotate(0.5 370 134)"/>
+          <rect x="248" y="56" width="10" height="156" rx="2" fill="url(#p6bHc)"/>
+          <rect x="530" y="48" width="320" height="128" rx="10" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-0.4 690 112)"/>
+          <path d="M212 112 L234 112" marker-end="url(#p6bAr)"/>
+          <path d="M502 112 L524 112" marker-end="url(#p6bAr)"/>
+          <!-- three decisions -->
+          <rect x="530" y="250" width="100" height="56" rx="8" fill="#FFFFFF" transform="rotate(1 580 278)"/>
+          <rect x="640" y="250" width="100" height="56" rx="8" fill="#FFFFFF" transform="rotate(-1 690 278)"/>
+          <rect x="750" y="250" width="100" height="56" rx="8" fill="#FFFFFF" transform="rotate(1.2 800 278)"/>
+          <path d="M580 180 L580 244" marker-end="url(#p6bAr)"/>
+          <path d="M690 180 L690 244" marker-end="url(#p6bAr)"/>
+          <path d="M800 180 L800 244" marker-end="url(#p6bAr)"/>
+          <!-- the out-of-slip action -->
+          <rect x="240" y="250" width="260" height="56" rx="8" fill="#FEF2F2" stroke="#991B1B" transform="rotate(-0.6 370 278)"/>
+          <!-- doodle anchor: a magnifier -->
+          <circle cx="104" cy="232" r="22"/>
+          <path d="M120 248 L144 274"/>
+        </g>
+
+        <text class="p6bH" x="46" y="72">PERMISSION SLIP</text>
+        <text class="p6bS" x="46" y="90">written in session 5</text>
+        <text class="p6bL" x="46" y="114">read: yes</text>
+        <text class="p6bL" x="46" y="132">label: yes</text>
+        <text class="p6bL" x="46" y="150">draft: yes</text>
+        <text class="p6bB" x="46" y="168">send: no</text>
+
+        <text class="p6bH" x="272" y="72">ACTION LOG, ONE WEEK</text>
+        <text class="p6bS" x="272" y="98">Mon  12 labels applied</text>
+        <text class="p6bS" x="272" y="122">Tue  4 drafts written</text>
+        <text class="p6bS" x="272" y="146">Wed  9 labels applied</text>
+        <text class="p6bR" x="272" y="170">Thu  1 message sent</text>
+        <text class="p6bS" x="272" y="194">Fri  3 drafts written</text>
+
+        <text class="p6bH" x="548" y="72">SPOT CHECK: FIVE ACTIONS</text>
+        <text class="p6bS" x="548" y="96">pick five, spread across the week</text>
+        <text class="p6bS" x="548" y="118">would I have done the same thing?</text>
+        <text class="p6bS" x="548" y="140">is each one inside the slip?</text>
+        <text class="p6bB" x="548" y="162">one action outside the slip decides it</text>
+
+        <text class="p6bL" x="546" y="276">keep</text>
+        <text class="p6bS" x="546" y="294">same slip</text>
+        <text class="p6bL" x="656" y="276">narrow</text>
+        <text class="p6bS" x="656" y="294">fewer scopes</text>
+        <text class="p6bL" x="766" y="276">revoke</text>
+        <text class="p6bS" x="766" y="294">pull access</text>
+
+        <text class="p6bR" x="256" y="274">Thu: a send, and the slip says no</text>
+        <text class="p6bS" x="256" y="294">narrow or revoke, never just note it</text>
+
+        <text class="p6bN" x="30" y="340">The log is constructed for teaching; your assistant's log will differ.</text>
+        <text class="p6bN" x="30" y="360">A slip is what you decided. The log is the only evidence of what happened.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the slip and the log meet in the amber spot check, and one out-of-slip action is enough to change the decision</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Five actions, three questions<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Anthropic's own computer-use documentation is blunt about this: "Always carefully review and verify Claude's computer use actions and logs." The advice generalises to any assistant with access to your mail. Reading a whole week of actions is not realistic. Five is, and five spread across the week see more of it than five from Monday.</p>
+        <p>For each of the five, ask three questions. <strong>Is it inside the slip?</strong> Compare the action's rung, read, label, draft, send or delete, with what the slip allows. <strong>Would I have done the same?</strong> A label you would have applied differently is a quality problem; note it for the monthly re-score. <strong>Could I undo it?</strong> Anything you could not undo, a sent message, a deletion, a forwarded thread, gets a second look even if it was technically allowed. Also look once at the standing rules session 5 warned about: a filter the assistant created keeps acting after the log goes quiet.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>When the log shows an action outside its slip<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Noting it is not a decision. If the slip says "send: no" and the log shows a send, then either the scope it holds allows more than the slip says, or something outside your instructions told it to act. Session 5 showed both happen. In both cases the fix sits at the permission, not in a reminder to yourself. <strong>Narrow</strong> means re-granting with fewer scopes, or moving the assistant down the ladder from session 5. <strong>Revoke</strong> means removing its access from your account's connected-apps page today and deciding later whether to grant it again.</p>
+        <p>Where those pages are and what they show changes with each product release. The steps were read in October 2026; re-check them in your own account before relying on them.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>No log you can read, no delegation past draft<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Some assistants keep a clear history of what they did; some keep nothing you can see. If you cannot read the log, you cannot run the check, and an assistant you cannot check should stay at a rung where you see every result anyway: read, label, or draft. How agent builders design logging and observability in the first place, and why, is architecture, taught in <a href="https://phoebefu6.github.io/learn-ai-agents-with-phoebe/courses/a4-risk-governance.html">AI Agents, session a4 ↗</a>. From your chair the rule is simpler: the log is a precondition for trust, not a bonus feature.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The vendor tells you to read the log.</strong> Anthropic's computer-use documentation advises "Always carefully review and verify Claude's computer use actions and logs." The red-team results and the "mailbox hygiene" email from Anthropic's own Claude in Chrome pilot, both in session 5, show why: an instruction hidden in a message can move an agent to act, and the place you would find out is the log. A weekly five-action check is the smallest version of that advice that a person will actually keep doing.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers keeping rules honest over time</span>
+      <h2>Re-score the rules on fresh labels</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">A rule scored on the bench in session 4 was scored on three mailboxes from 2001. A rule scored on your own mail in October was scored on October. Senders change, projects end, a newsletter starts writing "please" in every subject. The only number worth trusting about a rule is a recent one on your own labels, so once a month you label one fresh week and count again.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 396" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A monthly loop of four steps: label one recent week of your own mail as act, read or archive by what you did; re-run each rule's counts of flagged, hits and misses; compare precision, recall and base rate with last month; adjust or retire a rule, then repeat next month. Beside it, Gmail Priority Inbox's error on 160 thousand messages users marked by hand: 45 percent with one global model, 38 percent with per-user models, 31 percent with per-user models and per-user thresholds. A bottom strip gives the session 4 bench base rates: 25.9 percent overall, 12.3 for Corman, 30.8 for Keiser, 34.6 for Heard.">
+        <defs>
+          <filter id="p6cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="63" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p6cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p6cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p6cH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p6cL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p6cS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p6cB { font: 800 11px Inter, sans-serif; fill: #6B3A00; }
+          .p6cV { font: 800 16px Inter, sans-serif; fill: #4A2A5E; }
+          .p6cN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p6cH" x="30" y="26">ONCE A MONTH, ON ONE FRESH WEEK OF YOUR OWN MAIL</text>
+
+        <g filter="url(#p6cSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="48" width="210" height="72" rx="10" fill="#FFFFFF" transform="rotate(-1 145 84)"/>
+          <rect x="300" y="48" width="210" height="72" rx="10" fill="#FFFFFF" transform="rotate(1 405 84)"/>
+          <rect x="300" y="186" width="210" height="72" rx="10" fill="#FCF1E3" stroke="#9C5600" transform="rotate(-0.8 405 222)"/>
+          <rect x="40" y="186" width="210" height="72" rx="10" fill="#FFFFFF" transform="rotate(0.8 145 222)"/>
+          <path d="M254 84 L294 84" marker-end="url(#p6cAr)"/>
+          <path d="M405 124 L405 180" marker-end="url(#p6cAr)"/>
+          <path d="M296 222 L256 222" marker-end="url(#p6cAr)"/>
+          <path d="M145 182 L145 126" marker-end="url(#p6cAr)"/>
+          <!-- doodle anchor: a calendar page in the middle of the loop -->
+          <rect x="255" y="136" width="40" height="36" rx="3" fill="#FFFFFF"/>
+          <path d="M255 146 L295 146"/>
+          <path d="M265 131 L265 140"/>
+          <path d="M285 131 L285 140"/>
+          <!-- Priority Inbox bars, 45% = 220 px -->
+          <rect x="570" y="108" width="220" height="24" rx="3" fill="url(#p6cHc)"/>
+          <rect x="570" y="158" width="186" height="24" rx="3" fill="url(#p6cHc)"/>
+          <rect x="570" y="208" width="152" height="24" rx="3" fill="#F6F0FA"/>
+          <!-- base-rate strip -->
+          <rect x="40" y="300" width="810" height="44" rx="8" fill="#F6F0FA" transform="rotate(0.2 445 322)"/>
+        </g>
+
+        <text class="p6cH" x="56" y="72">1 · LABEL ONE WEEK</text>
+        <text class="p6cS" x="56" y="92">act / read / archive</text>
+        <text class="p6cS" x="56" y="108">by what you actually did</text>
+
+        <text class="p6cH" x="316" y="72">2 · RE-RUN THE COUNTS</text>
+        <text class="p6cS" x="316" y="92">per rule: flagged, hits,</text>
+        <text class="p6cS" x="316" y="108">misses</text>
+
+        <text class="p6cH" x="316" y="210">3 · COMPARE MONTHS</text>
+        <text class="p6cS" x="316" y="230">precision, recall, and</text>
+        <text class="p6cB" x="316" y="246">this month's base rate</text>
+
+        <text class="p6cH" x="56" y="210">4 · ADJUST OR RETIRE</text>
+        <text class="p6cS" x="56" y="230">one rule at a time,</text>
+        <text class="p6cS" x="56" y="246">then wait a month</text>
+
+        <text class="p6cH" x="570" y="60">GMAIL PRIORITY INBOX ERROR</text>
+        <text class="p6cS" x="570" y="78">on 160k messages users marked by hand</text>
+        <text class="p6cL" x="570" y="102">one global model</text>
+        <text class="p6cV" x="800" y="127">45%</text>
+        <text class="p6cL" x="570" y="152">per-user models</text>
+        <text class="p6cV" x="766" y="177">38%</text>
+        <text class="p6cL" x="570" y="202">per-user models + thresholds</text>
+        <text class="p6cV" x="732" y="227">31%</text>
+        <text class="p6cS" x="570" y="256">"users do not agree on the cost of a</text>
+        <text class="p6cS" x="570" y="272">false positive versus a false negative"</text>
+
+        <text class="p6cL" x="58" y="327">Session 4 bench base rates: 25.9% overall; Corman 12.3%, Keiser 30.8%, Heard 34.6%.</text>
+
+        <text class="p6cN" x="30" y="378">A rule scored once, on someone else's labels, drifts. Re-score it on yours, every month.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the amber step is the comparison, and the bars on the right are why it has to be on your own labels: personalising the threshold cut error from 45 to 31 percent</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why last month's precision is not this month's<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Two things move under a rule. The <strong>base rate</strong> moves: on the session 4 bench the share of mail acted on was 25.9 percent across all three mailboxes, but 12.3 percent for Corman, 30.8 for Keiser and 34.6 for Heard. A precision number means nothing until it sits next to the base rate of the same mail, and your base rate in a quiet month is not your base rate in a launch month. The <strong>cost of a mistake</strong> moves too, and differs from person to person: a missed message costs one person an awkward apology and another a lost contract.</p>
+        <p>Gmail's Priority Inbox engineers wrote down the second point in 2010: they tuned a per-user threshold because "users do not agree on the cost of a false positive versus a false negative". On 160,000 messages users had marked by hand, error was 45 percent with one global model, 38 with per-user models, and 31 with per-user models and per-user thresholds. A personal rule is a per-user threshold you set by hand. It needs the same thing theirs did: your labels, recent ones.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The cadence: four loops at four speeds<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <table class="clean">
+          <tr><th>When</th><th>What</th><th>Time</th></tr>
+          <tr><td>Daily</td><td>Triage passes with your rules, a few times a day rather than continuously</td><td>Minutes, spread out</td></tr>
+          <tr><td>Weekly</td><td>The ops review: clear, current, agent check, decide</td><td>30 min, same slot</td></tr>
+          <tr><td>Monthly</td><td>Re-score every rule on one fresh labelled week; check each assistant's scope still matches its job</td><td>About an hour</td></tr>
+          <tr><td>Quarterly</td><td>Re-run the five-day log from session 1 and compare it with the first one</td><td>Five days, a few minutes each</td></tr>
+        </table>
+        <p>The quarterly log is the only honest answer to "did any of this give me time back". Two logs, months apart, by loop. If the ops share did not move, the system is costing you as much as it saves, and the review is where you say so.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Retiring a rule without guilt<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A rule whose precision has drifted down to the base rate is now flagging mail at random with respect to what you act on: lift near 1.00, the same reading the session 4 bench gave the "from my company" rule. Keeping it costs attention and buys nothing. Retire it, write the date and the last counts in the spec, and move on.</p>
+        <p>Be careful with small counts before you retire anything. On the bench, the "subject says urgent" rung flagged five messages, and a shuffle of the labels pushed it to 60 percent precision by chance. A rule that flagged five messages this month can swing by twenty points on one message. Give a low-volume rule two or three months of counts before you judge it.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Gmail did not trust one threshold for everyone.</strong> Priority Inbox, described by its engineers at a NIPS workshop in 2010, learned importance from how each user handled mail after delivery: opens, replies, corrections. Even with that, a single global model got 45 percent of user-marked messages wrong; adding per-user models and per-user thresholds brought it to 31. If they had to personalise, a rule you wrote once for your own inbox deserves at least a monthly look at your own counts.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Your one-page personal-ops spec</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">Everything from six sessions fits on one sheet. Writing it down does two jobs: it shows the gaps (a loop with no owner, an assistant with no slip, a rule with no counts), and it gives the weekly review something fixed to check against. Fill in what you have tonight; the brackets you cannot fill yet are your to-do list.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The one-page personal-ops spec drawn as a single pinned sheet with six sections: loops and owners; rules with last month's counts; assistants and their permission slips; where the open-loops list lives; the review cadence; and the never-delegate line. Margin notes say the weekly review reads sections 1, 3 and 4, and the monthly re-score updates sections 2 and 3.">
+        <defs>
+          <filter id="p6dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="64" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="p6dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#8957A2" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="p6dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#241A2E" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .p6dH { font: 800 12px Inter, sans-serif; fill: #241A2E; }
+          .p6dL { font: 600 12px Inter, sans-serif; fill: #241A2E; }
+          .p6dS { font: 400 11px Inter, sans-serif; fill: #5E5370; }
+          .p6dB { font: 800 12px Inter, sans-serif; fill: #6B3A00; }
+          .p6dA { font: 700 11px Inter, sans-serif; fill: #8957A2; }
+          .p6dN { font: 400 12px Inter, sans-serif; fill: #5E5370; }
+        </style>
+
+        <text class="p6dH" x="30" y="26">THE ONE-PAGE PERSONAL-OPS SPEC, SIX SECTIONS</text>
+
+        <g filter="url(#p6dSk)" fill="none" stroke="#241A2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="150" y="44" width="580" height="384" rx="6" fill="#FFFFFF" transform="rotate(0.4 440 236)"/>
+          <rect x="170" y="88" width="540" height="48" rx="4" fill="#F6F0FA"/>
+          <rect x="170" y="144" width="540" height="48" rx="4" fill="#F6F0FA"/>
+          <rect x="170" y="200" width="540" height="48" rx="4" fill="#F6F0FA"/>
+          <rect x="170" y="256" width="540" height="48" rx="4" fill="#F6F0FA"/>
+          <rect x="170" y="312" width="540" height="48" rx="4" fill="#F6F0FA"/>
+          <rect x="170" y="368" width="540" height="48" rx="4" fill="#FCF1E3" stroke="#9C5600"/>
+          <!-- doodle anchor: a pin -->
+          <circle cx="440" cy="40" r="7" fill="#DCC9E8"/>
+          <path d="M440 47 L440 56"/>
+          <!-- margin brace for weekly / monthly -->
+          <path d="M744 92 L752 92 L752 300 L744 300"/>
+          <path d="M136 148 L128 148 L128 244 L136 244"/>
+        </g>
+
+        <text class="p6dH" x="186" y="76">MY PERSONAL-OPS SPEC · [name] · updated [date]</text>
+
+        <text class="p6dL" x="186" y="108">1 · Loops and owners</text>
+        <text class="p6dS" x="186" y="126">triage, reply, chase, review: who or what runs each one</text>
+        <text class="p6dL" x="186" y="164">2 · Rules, with last month's counts</text>
+        <text class="p6dS" x="186" y="182">flagged, hits, misses per rule, and the date of the last re-score</text>
+        <text class="p6dL" x="186" y="220">3 · Assistants and their permission slips</text>
+        <text class="p6dS" x="186" y="238">app, scope granted, what it may do, date of the last log check</text>
+        <text class="p6dL" x="186" y="276">4 · Where the open-loops list lives</text>
+        <text class="p6dS" x="186" y="294">one place for "I owe" and "Waiting for"</text>
+        <text class="p6dL" x="186" y="332">5 · Review cadence</text>
+        <text class="p6dS" x="186" y="350">daily triage, weekly review, monthly re-score, quarterly log</text>
+        <text class="p6dB" x="186" y="388">6 · The never-delegate line</text>
+        <text class="p6dS" x="186" y="406">what stays yours, whatever the scope allows</text>
+
+        <text class="p6dA" x="760" y="188">weekly review</text>
+        <text class="p6dA" x="760" y="204">reads 1, 3, 4</text>
+        <text class="p6dA" x="30" y="190">monthly</text>
+        <text class="p6dA" x="30" y="206">re-score</text>
+        <text class="p6dA" x="30" y="222">updates 2, 3</text>
+
+        <text class="p6dN" x="30" y="450">A template, not a filled example. The brackets are yours; your sheet will differ.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - six sections on one sheet, with the never-delegate line at the bottom in amber because it is the one section no review should ever loosen</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Copy the template.</strong> Plain text, anywhere you will open every Friday. Square brackets are the parts that change. Fill what you can from sessions 1 to 5 now; leave the rest bracketed.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · the spec template</span>MY PERSONAL-OPS SPEC - [name] - updated [date]
+
+1. LOOPS AND OWNERS
+   triage:  [me / rules / assistant name]  [how often]
+   reply:   [me, drafts by assistant name?]
+   chase:   [me, nudges drafted by ...]
+   review:  me, [day and time]
+
+2. RULES (last re-score: [date])
+   [rule name]  [search string]  flagged [n]  hits [n]  misses [n]
+
+3. ASSISTANTS AND SLIPS
+   [app]  scope: [scope string]  may: [read/label/draft]  never: [send/delete]
+          last log check: [date]
+
+4. OPEN-LOOPS LIST
+   lives in: [one place]  columns: I owe / Waiting for
+
+5. CADENCE
+   daily triage [times] / weekly review [day] / monthly re-score [date]
+   quarterly five-day log [month]
+
+6. NEVER DELEGATE
+   [the decisions and messages that stay mine]</div>
+      </div>
+      <div class="step">
+        <p><strong>Write the weekly sweep prompt.</strong> This is the assistant's whole job in the review: find candidates, quote the sentence, invent nothing, send nothing. Run it before you sit down, then read the result as a precision pass.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · the weekly-review sweep</span>Below are the messages I sent and received between [Monday date] and [Friday date].
+List every open loop you can find, in two groups:
+  I OWE: something I asked for, agreed to, or promised.
+  WAITING FOR: something I asked someone else for that has no reply yet.
+For each line give: the person, the exact sentence it came from (quoted), and the date.
+If you find none in a group, write "none found". Do not invent a loop, a person or a date.
+Do not draft replies. Do not send, archive, label or delete anything.
+
+[paste or attach last week's messages]</div>
+      </div>
+      <div class="step">
+        <p><strong>Write the agent log checklist.</strong> One block per assistant, copied into your review notes each Friday. It ends in a decision, not a note.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · the agent log check</span>ASSISTANT: [name]   SLIP: [read / label / draft; never send / delete]
+[ ] Opened its log or history for the last 7 days
+[ ] Picked 5 actions, spread across the week
+[ ] Each one inside the slip?            [yes / no: which]
+[ ] Would I have done the same?          [yes / differently: how]
+[ ] Anything I could not undo?           [none / what]
+[ ] Any new filter or standing rule?     [none / what]
+DECISION: [keep / narrow the scope to ... / revoke today]</div>
+      </div>
+      <div class="step">
+        <p><strong>Set up the monthly re-score sheet.</strong> Label one recent week as act, read or archive by what you actually did, exactly as on the session 4 bench. Then count each rule. Precision is hits over flagged; recall is hits over hits plus misses; the base rate is acted-on messages over all messages that week. The rows below are constructed to show the arithmetic.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the re-score sheet (constructed rows)</span>Week labelled: [dates]   messages: 150   acted on: 27   base rate: 18.0%
+
+rule                    flagged  hits  misses  precision  recall   base rate
+person, to me, short       40     18      9      45.0%     66.7%    18.0%
+from my team               70     15     12      21.4%     55.6%    18.0%
+subject says urgent         3      0     27       0.0%      0.0%    18.0%
+
+constructed, your numbers will differ
+Compare each row with last month. Precision near the base rate: retire.
+Three flagged: too few to judge, wait another month.</div>
+      </div>
+      <div class="step">
+        <p><strong>Put the review in your calendar.</strong> A recurring 30-minute block, same day and time every week, named after the job it does so that it reads as work when someone tries to book over it. Add a monthly one for the re-score and a quarterly reminder for the five-day log.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the recurring blocks</span>Weekly, Friday [time], 30 min:   "Ops review: loops, agent log, next week's three"
+Monthly, first Monday, 60 min:     "Rule re-score + scope check"
+Quarterly, first week:             "Five-day log, round [n]"</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Section 6 is the one you do not get to skip.</strong> The never-delegate line is what stays yours however capable the assistant becomes. Which kinds of message and decision belong on it is taught in <a href="https://phoebefu6.github.io/learn-ai-office-with-phoebe/courses/06-make-it-repeatable.html">AI Office, session 6 ↗</a>; write your own version of it here, in your own words, and read it at every review.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>The last one, and it takes four weeks</h2>
+      <span class="tag exercise">30 min a week, for 4 weeks</span>
+    </div>
+    <ol>
+      <li><strong>Run the review on four Fridays in a row.</strong> Same slot, same order: clear, sweep, current, agent check, decide. Note where it ran long.</li>
+      <li><strong>Re-score once, at the end of the month.</strong> Label one fresh week, fill the sheet from step 4, and write the counts into section 2 of your spec.</li>
+      <li><strong>Re-run the five-day log in a quarter.</strong> Put it in the calendar now. Compare the ops share with your first log from session 1.</li>
+      <li><strong>Revoke one scope you no longer need.</strong> There is almost always one: an app tried once, a grant above its job. Remove it, and update section 3.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and the passport is full.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · In the weekly ops review, which of these is the assistant's job rather than yours?</p>
+      <button class="qopt" type="button">A · Deciding which three things matter next week</button>
+      <button class="qopt" type="button">B · Accepting or dropping a commitment someone asked of you</button>
+      <button class="qopt" type="button">C · Sweeping last week's sent and received mail for open loops, quoting the sentence each came from, and drafting waiting-for nudges without sending them</button>
+      <button class="qopt" type="button">D · Sending the follow-up nudges to people who have gone quiet</button>
+      <p class="qwhy">Finding is a recall job, and an assistant can do it. Deciding what matters, accepting or dropping a commitment, and sending anything all stay with you. The GTD checklist already separates the sweep from the decisions; the assistant only takes the sweep.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Your triage rule scored well on the session 4 bench. Why re-score it every month on your own fresh labels?</p>
+      <button class="qopt" type="button">A · Because base rates and the cost of a mistake differ by person and by month; Priority Inbox cut error from 45 to 31 percent by adding per-user models and per-user thresholds</button>
+      <button class="qopt" type="button">B · Because the bench numbers were wrong</button>
+      <button class="qopt" type="button">C · Because rules stop working after exactly 30 days</button>
+      <button class="qopt" type="button">D · Because precision only counts when it is above 90 percent</button>
+      <p class="qwhy">The bench itself showed base rates of 12.3, 30.8 and 34.6 percent in three mailboxes. Gmail's engineers tuned a per-user threshold because "users do not agree on the cost of a false positive versus a false negative". Your rule needs your labels, and recent ones.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · The weekly agent check shows your assistant sent a message, and its permission slip says "send: no". What do you do?</p>
+      <button class="qopt" type="button">A · Note it in the review and check again next week</button>
+      <button class="qopt" type="button">B · Nothing, as long as the message looked fine</button>
+      <button class="qopt" type="button">C · Add a line to the prompt asking it not to send</button>
+      <button class="qopt" type="button">D · Narrow its scope or revoke its access today, then update the slip and the spec</button>
+      <p class="qwhy">An action outside the slip means the platform's scope allows more than you decided, or something told the assistant to act. Either way the fix sits at the permission, not in a note or a polite instruction. Narrow it or pull it.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">David Allen Company, GTD Weekly Review checklist (1990-2006)</span><span class="note">Read at source: the three stages and their steps as printed. A practitioner method, not a study, and presented as one</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Aberdeen, Pacovsky, Slater, "The Learning Behind Gmail Priority Inbox" (NIPS 2010 workshop)</span><span class="note">Read at source: error on 160k user markings of 45, 38 and 31 percent; the per-user threshold and the sentence on disagreeing costs</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Anthropic, computer use tool documentation</span><span class="note">The advice to review and verify actions and logs, quoted; the rest of the security guidance is in session 5</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The session 4 bench base rates</span><span class="note">25.9 percent overall; 12.3, 30.8 and 34.6 per mailbox, quoted from the bench on the CMU Enron Email Dataset</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The re-score rows in step 4</span><span class="note">Constructed to show the arithmetic; your numbers will differ</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Clear, current, creative</b><span>The GTD review's three stages. A practitioner method, not a study.</span></div>
+      <div class="cheat-item"><b>Sweep vs decide</b><span>The assistant finds and quotes. You decide, accept, drop and send.</span></div>
+      <div class="cheat-item"><b>Five actions a week</b><span>Per assistant: inside the slip? same as you would? undoable?</span></div>
+      <div class="cheat-item"><b>Outside the slip</b><span>Narrow or revoke today. A note is not a decision.</span></div>
+      <div class="cheat-item"><b>Re-score monthly</b><span>One fresh labelled week. Precision next to that week's base rate.</span></div>
+      <div class="cheat-item"><b>Four speeds</b><span>Daily triage, weekly review, monthly re-score, quarterly five-day log.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">What you now own</span>
+    <p>A log of where your week goes, triage rules with real precision and recall, an open-loops list you can trust, a written scope for every assistant that touches your mail, and a weekly half hour that keeps all of it honest. The six sessions stay on the <a href="../index.html">course home</a> for when a rule drifts or a new assistant arrives, and the next subject is waiting at <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a>.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 6 of 6 · learn-ai-productivity-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="05-read-draft-send.html">← Prev: Read, draft, send</a> &nbsp;·&nbsp; <a href="../index.html">Course home →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=2"></script>
+</body>
+</html>
